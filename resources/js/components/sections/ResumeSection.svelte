@@ -20,8 +20,7 @@
                     {fullName}.
                 </p>
                 <a
-                    href="/resume.pdf"
-                    download
+                    href="/download-cv"
                     class="inline-flex items-center justify-center rounded-full bg-[var(--color-primary)] px-7 py-3 text-sm font-semibold text-white transition hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2 focus:ring-offset-[var(--color-bg)]"
                 >
                     Download Resume

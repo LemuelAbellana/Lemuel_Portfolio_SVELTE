@@ -21,3 +21,27 @@ Route::get('/', function () {
 });
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+Route::get('/download-cv', function () {
+    $cvPath = public_path('resume.pdf');
+
+    abort_unless(file_exists($cvPath), 404);
+
+    return response()->download($cvPath, 'Lemuel_Abellana_CV.pdf');
+})->name('cv.download');
+ 
+Route::get('/projects', function () {
+    return Inertia::render('Portfolio/Projects', [
+        'profile' => [
+            'name' => 'Lemuel G. Abellana',
+            'title' => 'BSIT Student | Full-Stack Developer',
+            'tagline' => 'Building practical web and mobile systems with AI integration for education and community impact.',
+            'email' => 'labellana_23000002074@uic.edu.ph',
+            'phone' => '09512575802',
+            'location' => 'Molave Street, Barangay Santo Nino, Tugbok District, Davao City',
+            'linkedin' => 'https://www.linkedin.com',
+            'github' => 'https://github.com',
+            'photo' => null,
+        ],
+    ]);
+})->name('projects');
