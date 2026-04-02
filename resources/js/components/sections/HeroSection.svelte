@@ -51,7 +51,7 @@
     });
 </script>
 
-<section id="home" class="relative min-h-screen overflow-hidden pt-28" bind:this={container}>
+<section id="home" class="relative overflow-hidden pt-28 pb-14 md:pb-20" bind:this={container}>
     <div class="pointer-events-none absolute inset-0 opacity-10" style="background-image: linear-gradient(135deg, rgba(148, 163, 184, 0.25) 1px, transparent 1px); background-size: 28px 28px;"></div>
     <div class="pointer-events-none absolute right-[12%] top-[20%] h-72 w-72 rounded-full bg-[var(--color-primary)]/20 blur-3xl"></div>
 
@@ -68,9 +68,9 @@
             </div>
 
             <div class="mt-10 flex flex-wrap gap-6 text-sm text-[var(--color-muted)]" bind:this={heroItems[4]}>
-                <span><strong class="text-[var(--color-text)]">6</strong> Projects</span>
+                <span><strong class="text-[var(--color-text)]">13</strong> Projects</span>
                 <span><strong class="text-[var(--color-text)]">3</strong> Leadership Roles</span>
-                <span><strong class="text-[var(--color-text)]">DOST</strong> Scholar</span>
+                <span><strong class="text-[var(--color-text)]">4+</strong> Major Affiliations</span>
             </div>
         </div>
 

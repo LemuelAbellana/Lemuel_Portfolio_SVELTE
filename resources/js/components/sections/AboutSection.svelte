@@ -14,7 +14,7 @@
         'Web Development',
         'Mobile Development',
         'Systems Analysis & Design',
-        'Cloud Computing',
+        'Cloud Computing Fundamentals',
         'AI System Integration',
         'Project Management',
         'Organizational Leadership',
@@ -23,6 +23,9 @@
     const keyAchievements = [
         'DOST-SEI Scholar (2023-2027)',
         'Top 100 Scholars Leadership Camp Region XI',
+        'NASA Space Apps Challenge 2025 Participant',
+        'DurianPy AI Engineering 2025 Participant',
+        'Ignacian Marian Leadership Training Participant',
         'Vice Mayor, GDG on Campus - UIC (2025-2026)',
     ];
 
@@ -30,28 +33,28 @@
         {
             label: 'Background',
             content:
-                'I am a passionate BS Information Technology student based in Davao City who combines technical development skills with student leadership. From learning core systems and development foundations, I steadily grew into building full-stack applications while serving communities through GDG on Campus, VIBE Club, and NSTP-CWTS initiatives.',
+                'I am a Bachelor of Science in Information Technology student at the University of the Immaculate Conception, based in Davao City. My work combines full-stack development, progressive web applications, and AI-assisted systems with leadership experience from GDG on Campus, UIC-VIBE Club, and NSTP-CWTS community initiatives.',
         },
         {
             label: 'Education',
             content:
-                'I am pursuing a BS Information Technology degree at the University of the Immaculate Conception in Davao City. My coursework has grounded me in both software engineering practices and practical implementation across web, mobile, cloud, and AI-assisted systems.',
+                'I am pursuing BS Information Technology at the University of the Immaculate Conception. My coursework and project-based training cover software engineering, systems analysis and design, cloud fundamentals, mobile and web development, AI system integration, project management, and organizational leadership.',
             list: courses,
         },
         {
             label: 'Mission & Vision',
             content:
-                'My mission is to craft reliable, elegant digital systems that empower communities. My vision is to grow into a senior engineering role within the Philippine tech ecosystem, contributing to scalable platforms and AI-powered tools.',
+                'My mission is to build reliable and user-focused digital solutions that support education, health, research, and community initiatives. My vision is to grow into a professional software engineer who contributes to scalable systems and responsible AI applications in the Philippines.',
         },
         {
             label: 'Goals',
             content:
-                'My short-term goal is to graduate with honors and secure a junior developer role. My long-term goal is to build impactful software products and mentor the next generation of Filipino developers.',
+                'My short-term goals are to complete my degree, continue producing high-quality portfolio projects, and secure an internship or junior developer role. My long-term goals are to deliver impactful products, strengthen leadership in tech communities, and mentor aspiring developers.',
         },
         {
             label: 'Motivation',
             content:
-                'I am motivated by projects that combine technical depth with social value. Seeing students, organizations, or local communities benefit from software solutions keeps me focused on delivering practical and maintainable systems.',
+                'I am motivated by projects with measurable social value. Whether through academic systems, student organization initiatives, or civic outreach, I stay focused on building maintainable solutions that improve processes and help real users.',
             list: keyAchievements,
         },
     ];
@@ -98,7 +101,7 @@
     });
 </script>
 
-<section id="about" class="section-wrap" bind:this={section}>
+<section id="about" class="section-wrap pt-10 md:pt-14" bind:this={section}>
     <div class="mx-auto grid w-full max-w-6xl gap-10 px-6 lg:grid-cols-5">
         <div class="lg:col-span-2" data-about-item>
             <SectionTitle number="01" title="About Me" subtitle="My background, training, purpose, and long-term direction as a full-stack developer." />

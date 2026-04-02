@@ -19,7 +19,7 @@
             label: 'Framework Layer',
             title: 'Frameworks',
             span: '',
-            items: ['Laravel', 'React (JS & TypeScript)', 'Express.js', 'Node.js'],
+            items: ['Laravel (Livewire)', 'React (JS/TS)', 'Express.js', 'Node.js'],
         },
         {
             label: 'Persistence',
@@ -42,7 +42,9 @@
                 'Web Application Development',
                 'Mobile Application Development',
                 'Progressive Web Applications (PWA)',
-                'AI Integration',
+                'AI System Integration',
+                'Project Management',
+                'Organizational Leadership',
             ],
         },
     ];

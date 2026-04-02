@@ -1,6 +1,6 @@
 <script>
     import { onDestroy, onMount } from 'svelte';
-    import { Award, Cpu, Rocket, Star, Trophy, Users } from 'lucide-svelte';
+    import { Award, BadgeCheck, Cpu, Rocket, Star, Trophy, Users } from 'lucide-svelte';
     import SectionTitle from '../ui/SectionTitle.svelte';
     import { gsap, ScrollTrigger } from '../../lib/gsap';
 
@@ -13,6 +13,7 @@
         { title: 'Top 100 Scholars Leadership Camp Region XI', icon: Trophy },
         { title: 'NASA Space Apps Challenge 2025 Participant', icon: Rocket },
         { title: 'AI Engineering Training - DurianPy Davao', icon: Cpu },
+        { title: 'Ignacian Marian Leadership Training Participant', icon: BadgeCheck },
         { title: 'Member - ONSSE', icon: Users },
         { title: 'Member - DOST START', icon: Award },
     ];

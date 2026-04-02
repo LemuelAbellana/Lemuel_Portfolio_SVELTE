@@ -14,9 +14,10 @@
             role: 'Vice Mayor',
             org: 'Google Developer Groups on Campus - UIC',
             points: [
-                'Organized seminars and workshops.',
-                'Created activity plans and managed budgets.',
-                'Coordinated with partner organizations and led technical information sessions.',
+                'Co-led planning and execution of seminars and workshops with the club lead.',
+                'Prepared activity plans, budget requests, and liquidation documentation.',
+                'Conducted GDGOC-UIC InfoSession for membership and program orientation.',
+                'Collaborated with partner communities including DICE, USEP-DSC, UP SPARCS, and SPACE Davao.',
             ],
         },
         {
@@ -24,8 +25,9 @@
             role: 'Club Mayor',
             org: 'VIBE Club - UIC',
             points: [
-                'Facilitated seminars and student engagement activities.',
-                'Led event planning and coordination.',
+                'Facilitated student development seminars and engagement activities.',
+                'Led planning and coordination for News/Feature Writing and Filmmaking/Video Production sessions.',
+                'Helped strengthen creative and communication skills in the student community.',
             ],
         },
         {
@@ -33,9 +35,11 @@
             role: 'UIC-CCS Leader / Spearheader',
             org: 'NSTP-CWTS',
             points: [
-                'Conducted computer literacy workshops.',
-                'Organized community outreach and safety coordination.',
-                'Managed activity planning and execution.',
+                'Designed and facilitated DIGISKWELA digital literacy and game development workshops for 54 Grade 6 students.',
+                'Coordinated responsible digital citizenship seminars for student and community participants.',
+                'Spearheaded extension projects with CCS and partner student organizations for outreach and school support.',
+                'Led facilitator teams in planning schedules, safety procedures, and teaching materials.',
+                'Collected participant and teacher feedback to improve future civic engagement programs.',
             ],
         },
     ];
