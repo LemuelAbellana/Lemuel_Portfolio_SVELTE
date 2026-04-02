@@ -1,0 +1,1 @@
+window.appName = 'Lemuel Portfolio';

@@ -1,0 +1,23 @@
+{
+    "$schema": "https://www.schemastore.org/package.json",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite"
+    },
+    "devDependencies": {
+        "@inertiajs/svelte": "^3.0.1",
+        "@sveltejs/vite-plugin-svelte": "^7.0.0",
+        "@tailwindcss/vite": "^4.2.2",
+        "laravel-vite-plugin": "^3.0.1",
+        "svelte": "^5.55.1",
+        "tailwindcss": "^4.2.2",
+        "vite": "^8.0.3"
+    },
+    "dependencies": {
+        "bits-ui": "^2.16.5",
+        "gsap": "^3.14.2",
+        "lucide-svelte": "^1.0.1"
+    }
+}

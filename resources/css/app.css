@@ -1,0 +1,66 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@source '../**/*.svelte';
+
+@theme {
+    --font-display: 'Playfair Display', serif;
+    --font-sans: 'DM Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --color-bg: #0b0a12;
+    --color-surface: #151220;
+    --color-primary: #552583;
+    --color-warm: #fdb927;
+    --color-muted: #b8c3d6;
+    --color-text: #f1f5f9;
+
+    --spacing-section: 6rem;
+}
+
+:root {
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    background: radial-gradient(circle at 20% 10%, rgba(85, 37, 131, 0.26), transparent 42%),
+        radial-gradient(circle at 80% 20%, rgba(253, 185, 39, 0.12), transparent 35%),
+        radial-gradient(circle at 50% 88%, rgba(85, 37, 131, 0.28), transparent 46%),
+        linear-gradient(180deg, rgba(11, 10, 18, 0.98) 0%, rgba(16, 10, 28, 1) 48%, rgba(11, 9, 20, 1) 100%),
+        var(--color-bg);
+    color: var(--color-text);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.font-display {
+    font-family: var(--font-display);
+}
+
+.font-mono {
+    font-family: var(--font-mono);
+}
+
+.section-wrap {
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+}
+
+@media (min-width: 1024px) {
+    .section-wrap {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+    }
+}
