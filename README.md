@@ -1,58 +1,128 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Lemuel G. Abellana Portfolio
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A professional portfolio web application for Lemuel G. Abellana, built with Laravel, Inertia, and Svelte.
 
-## About Laravel
+This project showcases:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Academic and personal projects
+- Technical skills and development stack
+- Leadership and affiliations
+- Achievements and certifications
+- Contact form and downloadable resume
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## About Me
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+I am a Bachelor of Science in Information Technology student at the University of the Immaculate Conception, based in Davao City.
 
-## Learning Laravel
+My focus areas include:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Full-stack web development
+- Progressive Web Applications (PWA)
+- Mobile application development
+- AI-integrated solutions
+- Technical leadership and community engagement
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Tech Stack
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+- Backend: Laravel 13, PHP 8.3+
+- Frontend: Svelte 5, Inertia.js
+- Build tools: Vite, Tailwind CSS 4
+- Database: SQLite (default local), MySQL supported
+- Animation/UI: GSAP, Bits UI, Lucide Svelte
 
-## Agentic Development
+## Features
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+- Modern single-page portfolio experience with section-based navigation
+- Hero, About, Skills, Projects, Leadership, Achievements, Contact, and Resume sections
+- About carousel with auto-slide and manual controls
+- Contact form with server-side validation and persistence
+- Resume download support from public/resume.pdf
+- Responsive layout for desktop, tablet, and mobile
+
+## Quick Start
+
+### 1. Prerequisites
+
+Install the following:
+
+- PHP 8.3+
+- Composer
+- Node.js 20+
+- npm
+
+### 2. Install Dependencies and Initialize
+
+Run this from the project root:
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+composer run setup
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+This command:
 
-## Contributing
+- Installs Composer dependencies
+- Creates .env if missing
+- Generates app key
+- Runs migrations
+- Installs npm dependencies
+- Builds frontend assets
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Run Development Mode
 
-## Code of Conduct
+```bash
+composer run dev
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+This starts:
 
-## Security Vulnerabilities
+- Laravel app server
+- Queue listener
+- Vite dev server
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Open: http://127.0.0.1:8000
+
+## Windows Note
+
+On Windows, the default dev command excludes Laravel Pail to avoid pcntl extension errors.
+
+- Use composer run dev for normal development.
+- Use composer run dev:with-pail only on environments where pcntl is available (for example Linux/WSL/macOS).
+
+## Available Scripts
+
+- composer run setup: First-time project setup
+- composer run dev: Start local development services
+- composer run dev:with-pail: Start development with Laravel Pail logging
+- composer run test: Run application tests
+- npm run dev: Start only Vite dev server
+- npm run build: Build production assets
+
+## Project Structure
+
+- routes/web.php: Inertia route and profile data props
+- resources/js/Pages/Portfolio/Home.svelte: Portfolio page composition
+- resources/js/components/sections: Main section components
+- resources/js/components/ui: Reusable UI elements
+- resources/css/app.css: Theme variables and global styles
+- app/Http/Controllers/ContactController.php: Contact form handling
+
+## Contact Form Setup
+
+The contact form saves messages to the contacts table.
+
+If needed, run migrations manually:
+
+```bash
+php artisan migrate
+```
+
+## Customization Tips
+
+- Update profile values in routes/web.php
+- Replace public/resume.pdf with your final CV
+- Set real LinkedIn and GitHub URLs in profile props
+- Update project and achievements content in section components
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This portfolio project is for personal/professional use by the author.
