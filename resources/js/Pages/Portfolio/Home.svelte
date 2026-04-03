@@ -9,7 +9,6 @@
     import LeadershipSection from '../../components/sections/LeadershipSection.svelte';
     import AchievementsSection from '../../components/sections/AchievementsSection.svelte';
     import ContactSection from '../../components/sections/ContactSection.svelte';
-    import ResumeSection from '../../components/sections/ResumeSection.svelte';
 
     let { profile, flash = {}, errors = {} } = $props();
 
@@ -21,7 +20,6 @@
         { id: 'leadership', label: 'Leadership' },
         { id: 'achievements', label: 'Achievements' },
         { id: 'contact', label: 'Contact' },
-        { id: 'resume', label: 'Resume' },
     ]);
 
     let loaded = $state(false);
@@ -44,6 +42,5 @@
     <LeadershipSection />
     <AchievementsSection />
     <ContactSection {profile} {flash} {errors} />
-    <ResumeSection {profile} />
     <Footer links={navLinks} {profile} />
 </div>

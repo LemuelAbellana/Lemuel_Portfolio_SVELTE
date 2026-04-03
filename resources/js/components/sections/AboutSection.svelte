@@ -1,11 +1,14 @@
 <script>
     import { onDestroy, onMount } from 'svelte';
+    import { fade } from 'svelte/transition';
     import { revealOnScroll } from '../../lib/gsap';
 
     let section = $state(null);
     let activeIndex = $state(0);
     let autoSlide = $state(null);
     let trigger = $state(null);
+    let profileImageSrc = $state('/assets/images/gomz.jpg');
+    let showProfileImage = $state(true);
 
     const courses = [
         'Database Management',
@@ -81,7 +84,7 @@
         if (autoSlide) clearInterval(autoSlide);
         autoSlide = setInterval(() => {
             nextSlide();
-        }, 4500);
+        }, 3000);
     };
 
     const stopAutoSlide = () => {
@@ -89,6 +92,15 @@
             clearInterval(autoSlide);
             autoSlide = null;
         }
+    };
+
+    const handleProfileImageError = () => {
+        if (profileImageSrc !== '/build/assets/images/gomz.jpg') {
+            profileImageSrc = '/build/assets/images/gomz.jpg';
+            return;
+        }
+
+        showProfileImage = false;
     };
 
     $effect(() => {
@@ -107,8 +119,10 @@
     });
 </script>
 
-<section id="about" class="section-wrap pt-10 md:pt-14" bind:this={section}>
-    <div class="mx-auto w-full max-w-6xl px-6">
+<section id="about" class="section-wrap relative isolate overflow-hidden pt-10 md:pt-14" bind:this={section}>
+    <div class="about-dots-bg" aria-hidden="true"></div>
+
+    <div class="relative z-10 mx-auto w-full max-w-6xl px-6">
         <div class="mx-auto max-w-3xl text-center" data-about-item>
             <p class="inline-flex rounded-full bg-[var(--color-primary)]/14 px-4 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-muted)]">
                 About Me
@@ -120,34 +134,43 @@
         </div>
 
         <div class="mt-10" data-about-item>
-            <div class="overflow-hidden rounded-[2rem] border border-[var(--color-primary)]/25 bg-[color-mix(in_srgb,var(--color-surface)_92%,black)] shadow-[0_24px_60px_rgba(0,0,0,0.25)]" role="region" aria-label="About section carousel" onmouseenter={stopAutoSlide} onmouseleave={startAutoSlide}>
-                <div class="grid gap-0 lg:h-[560px] lg:grid-cols-[0.95fr_1.35fr]">
-                    <div class="flex min-h-[300px] items-center justify-center border-b border-[var(--color-primary)]/20 bg-[var(--color-primary)]/8 p-8 lg:h-full lg:min-h-0 lg:border-b-0 lg:border-r lg:p-10">
-                        <div class="flex h-48 w-48 items-center justify-center rounded-full border-4 border-[var(--color-warm)]/80 bg-[var(--color-bg)] shadow-[0_8px_30px_rgba(0,0,0,0.35)] md:h-56 md:w-56">
-                            <div class="text-center">
-                                <p class="font-mono text-xs uppercase tracking-[0.34em] text-[var(--color-muted)]">{activeSlide.label}</p>
-                                <p class="mt-3 text-4xl font-extrabold text-[var(--color-warm)]">LO</p>
-                                <p class="mt-2 text-xs uppercase tracking-[0.2em] text-[var(--color-muted)]">BSIT Scholar</p>
+            <div class="relative isolate overflow-hidden rounded-[2rem] border border-[var(--color-primary)]/25 bg-[color-mix(in_srgb,var(--color-surface)_92%,black)] shadow-[0_24px_60px_rgba(0,0,0,0.25)]" role="region" aria-label="About section carousel" onmouseenter={stopAutoSlide} onmouseleave={startAutoSlide}>
+                <div class="relative z-10 grid gap-0 lg:h-[560px] lg:grid-cols-[0.95fr_1.35fr]">
+                    <div class="min-h-[300px] border-b border-[var(--color-primary)]/20 bg-[var(--color-primary)]/8 lg:h-full lg:min-h-0 lg:border-b-0 lg:border-r">
+                        {#if showProfileImage}
+                            <img
+                                src={profileImageSrc}
+                                alt="Lemuel profile"
+                                class="h-full w-full object-cover"
+                                onerror={handleProfileImageError}
+                            />
+                        {:else}
+                            <div class="flex h-full items-center justify-center p-6 text-center text-sm text-[var(--color-muted)]">
+                                Add gomz.jpg to public/assets/images to display your profile photo.
                             </div>
-                        </div>
+                        {/if}
                     </div>
 
                     <div class="flex min-h-[300px] flex-col p-7 md:p-10 lg:h-full lg:min-h-0">
                         <div class="flex-1 overflow-y-auto pr-1">
-                            <p class="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-muted)]">{activeSlide.lead}</p>
-                            <h3 class="mt-3 text-3xl font-extrabold text-[var(--color-warm)] md:text-5xl">{activeSlide.label}</h3>
-                            <p class="mt-4 max-w-2xl text-base leading-relaxed text-[var(--color-muted)]">{activeSlide.content}</p>
+                            {#key activeIndex}
+                                <div class="min-h-[230px]" in:fade={{ duration: 900, delay: 900 }} out:fade={{ duration: 900 }}>
+                                    <p class="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-muted)]">{activeSlide.lead}</p>
+                                    <h3 class="mt-3 text-3xl font-extrabold text-[var(--color-warm)] md:text-5xl">{activeSlide.label}</h3>
+                                    <p class="mt-4 max-w-2xl text-base leading-relaxed text-[var(--color-muted)]">{activeSlide.content}</p>
 
-                            {#if activeSlide.list}
-                                <div class="mt-6">
-                                    <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-muted)]">Highlights</p>
-                                    <ul class="grid gap-2 text-sm text-[var(--color-text)]/92 md:grid-cols-2">
-                                        {#each activeSlide.list as item}
-                                            <li class="flex min-h-[44px] items-center rounded-lg border border-[var(--color-primary)]/24 bg-[var(--color-bg)]/30 px-3 py-2">{item}</li>
-                                        {/each}
-                                    </ul>
+                                    {#if activeSlide.list}
+                                        <div class="mt-6">
+                                            <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-muted)]">Highlights</p>
+                                            <ul class="grid gap-2 text-sm text-[var(--color-text)]/92 md:grid-cols-2">
+                                                {#each activeSlide.list as item}
+                                                    <li class="flex min-h-[44px] items-center rounded-lg border border-[var(--color-primary)]/24 bg-[var(--color-bg)]/30 px-3 py-2">{item}</li>
+                                                {/each}
+                                            </ul>
+                                        </div>
+                                    {/if}
                                 </div>
-                            {/if}
+                            {/key}
                         </div>
 
                         <div class="mt-6 flex flex-wrap gap-2">
@@ -164,7 +187,7 @@
                     </div>
                 </div>
 
-                <div class="flex items-center justify-center gap-4 border-t border-[var(--color-primary)]/20 bg-[var(--color-bg)]/18 px-6 py-5">
+                <div class="relative z-10 flex items-center justify-center gap-4 border-t border-[var(--color-primary)]/20 bg-[var(--color-bg)]/18 px-6 py-5">
                     <button type="button" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--color-primary)]/35 text-lg text-[var(--color-muted)] transition hover:border-[var(--color-warm)] hover:text-[var(--color-warm)]" onclick={prevSlide} aria-label="Previous slide">
                         &#8249;
                     </button>

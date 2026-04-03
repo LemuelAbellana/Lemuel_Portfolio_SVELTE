@@ -45,7 +45,9 @@
     aria-label="Main navigation"
 >
     <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
-        <button type="button" class="font-display text-2xl italic text-[var(--color-primary)]" onclick={() => scrollToSection('home')} aria-label="Go to Home section">&lt;LA/&gt;</button>
+        <button type="button" class="inline-flex items-center" onclick={() => scrollToSection('home')} aria-label="Go to Home section">
+            <img src="/assets/images/logolems.png" alt="Lems logo" class="h-11 w-auto object-contain" />
+        </button>
 
         <div class="hidden items-center gap-8 md:flex">
             {#each navLinks as item}
