@@ -1,6 +1,5 @@
 <script>
     import { onDestroy, onMount } from 'svelte';
-    import SectionTitle from '../ui/SectionTitle.svelte';
     import { gsap } from '../../lib/gsap';
 
     let section = $state(null);
@@ -101,7 +100,10 @@
 
 <section id="skills" class="section-wrap" bind:this={section}>
     <div class="w-full px-6">
-        <SectionTitle number="02" title="Skills" subtitle="A practical full-stack skillset shaped by projects, leadership work, and continuous technical training." />
+        <div class="skills-header">
+            <h2 class="skills-title">Skills</h2>
+            <p class="skills-subtitle">A practical full-stack skillset shaped by projects, leadership work, and continuous technical training.</p>
+        </div>
     </div>
 
     <div
@@ -125,6 +127,31 @@
 </section>
 
 <style>
+    .skills-header {
+        position: relative;
+        margin: 0 auto 2.25rem;
+        text-align: center;
+    }
+
+    .skills-title {
+        position: relative;
+        margin: 0;
+        font-family: 'DM Sans', sans-serif;
+        font-size: clamp(2.2rem, 5.2vw, 4rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--color-text);
+    }
+
+    .skills-subtitle {
+        margin: 0.9rem auto 0;
+        max-width: 52rem;
+        font-family: 'DM Sans', sans-serif;
+        font-size: clamp(1rem, 1.65vw, 1.45rem);
+        font-weight: 400;
+        color: var(--color-muted);
+    }
+
     .skills-cinema {
         position: relative;
         width: 100vw;

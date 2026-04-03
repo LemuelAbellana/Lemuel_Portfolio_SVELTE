@@ -28,7 +28,7 @@
         },
     ]);
 
-    const contactEmail = $derived(profile.email ?? 'labellana_23000002074@uic.edu.ph');
+    const contactEmail = $derived(profile.email ?? 'lemuelabellana84@gmail.com');
 
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -44,7 +44,7 @@
 <footer class="border-t border-[var(--color-primary)]/30 pt-10">
     <div class="mx-auto w-full max-w-4xl px-6">
         <h2 class="text-center font-display text-[clamp(1.8rem,3.6vw,2.55rem)] leading-tight text-[var(--color-warm)]">
-            Let's build something amazing together.
+            LET'S BUILD SOMETHING TOGETHER.
         </h2>
 
         <a
