@@ -15,6 +15,10 @@ Route::get('/', function () {
             'location' => 'Molave Street, Barangay Santo Nino, Tugbok District, Davao City',
             'linkedin' => 'https://www.linkedin.com',
             'github' => 'https://github.com',
+            'twitter' => 'https://x.com',
+            'instagram' => 'https://www.instagram.com',
+            'whatsapp' => 'https://wa.me/639512575802',
+            'facebook' => 'https://www.facebook.com',
             'photo' => null,
         ],
     ]);
@@ -41,6 +45,10 @@ Route::get('/projects', function () {
             'location' => 'Molave Street, Barangay Santo Nino, Tugbok District, Davao City',
             'linkedin' => 'https://www.linkedin.com',
             'github' => 'https://github.com',
+            'twitter' => 'https://x.com',
+            'instagram' => 'https://www.instagram.com',
+            'whatsapp' => 'https://wa.me/639512575802',
+            'facebook' => 'https://www.facebook.com',
             'photo' => null,
         ],
     ]);

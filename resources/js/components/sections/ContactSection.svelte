@@ -1,29 +1,35 @@
 <script>
     import { onDestroy, onMount } from 'svelte';
-    import { Code, Link2, Mail, MapPin, Phone } from 'lucide-svelte';
-    import { useForm } from '@inertiajs/svelte';
     import SectionTitle from '../ui/SectionTitle.svelte';
     import { revealOnScroll } from '../../lib/gsap';
 
-    let { profile, flash = {}, errors = {} } = $props();
-    const form = useForm({ name: '', email: '', message: '' });
+    let { profile } = $props();
 
     let section = $state(null);
     let trigger = $state(null);
-    const successText = $derived(flash.success ?? '');
 
-    const submit = () => {
-        form.post('/contact', {
-            preserveScroll: true,
-            onSuccess: () => {
-                form.reset('message');
-            },
-        });
-    };
-
-    $effect(() => {
-        successText;
-    });
+    const socials = $derived([
+        {
+            key: 'facebook',
+            name: 'Facebook',
+            href: profile.facebook,
+        },
+        {
+            key: 'instagram',
+            name: 'Instagram',
+            href: profile.instagram,
+        },
+        {
+            key: 'github',
+            name: 'GitHub',
+            href: profile.github,
+        },
+        {
+            key: 'linkedin',
+            name: 'LinkedIn',
+            href: profile.linkedin,
+        },
+    ]);
 
     onMount(() => {
         if (!section) return;
@@ -37,75 +43,40 @@
 
 <section id="contact" class="section-wrap" bind:this={section}>
     <div class="mx-auto w-full max-w-6xl px-6">
-        <SectionTitle number="06" title="Contact" subtitle="Let’s build something reliable and meaningful together." />
+        <SectionTitle number="06" title="Connect" subtitle="Find me on social platforms and connect directly." />
 
-        <div class="grid gap-8 lg:grid-cols-2">
-            <div class="space-y-5" data-contact-item>
-                <a href={`mailto:${profile.email}`} class="flex items-center gap-3 text-lg text-[var(--color-text)] hover:text-[var(--color-primary)]">
-                    <Mail class="h-5 w-5" aria-hidden="true" />
-                    {profile.email}
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-contact-item>
+            {#each socials as social}
+                <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open ${social.name} profile`}
+                    class="group flex min-h-[150px] flex-col items-center justify-center rounded-2xl border border-[var(--color-primary)]/35 bg-[var(--color-surface)] p-6 text-center transition hover:border-[var(--color-warm)] hover:-translate-y-1"
+                >
+                    <div class="h-8 w-8 text-[var(--color-warm)]" aria-hidden="true">
+                        {#if social.key === 'facebook'}
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="h-full w-full" role="img" aria-hidden="true">
+                                <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.2-1.6 1.5-1.6H17V4.8c-.4-.1-1.4-.2-2.6-.2-2.6 0-4.3 1.6-4.3 4.5V11H7.5v3h2.6v8h3.4z" />
+                            </svg>
+                        {:else if social.key === 'instagram'}
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="h-full w-full" role="img" aria-hidden="true">
+                                <path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm0 1.9A3.9 3.9 0 0 0 3.9 7.8v8.4a3.9 3.9 0 0 0 3.9 3.9h8.4a3.9 3.9 0 0 0 3.9-3.9V7.8a3.9 3.9 0 0 0-3.9-3.9H7.8zm8.8 1.4a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.9a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2z" />
+                            </svg>
+                        {:else if social.key === 'github'}
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="h-full w-full" role="img" aria-hidden="true">
+                                <path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.9.6-3.5-1.2-3.5-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 .9 1.5 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.3-.3-4.7-1.1-4.7-5a3.9 3.9 0 0 1 1-2.7c-.1-.2-.4-1.3.1-2.7 0 0 .9-.3 2.8 1a9.8 9.8 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.5.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.7 5 .4.3.7 1 .7 2v3c0 .3.2.6.7.5A10 10 0 0 0 12 2z" />
+                            </svg>
+                        {:else}
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="h-full w-full" role="img" aria-hidden="true">
+                                <path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.9 3.3-1.9 3.6 0 4.3 2.4 4.3 5.4v6.4zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6v11.5zM22 0H2C.9 0 0 .9 0 2v20c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2z" />
+                            </svg>
+                        {/if}
+                    </div>
+                    <p class="mt-4 text-lg font-semibold text-[var(--color-text)]">{social.name}</p>
+                    <p class="mt-1 text-xs uppercase tracking-[0.12em] text-[var(--color-muted)]">Visit Profile</p>
                 </a>
-                <p class="flex items-center gap-3 text-[var(--color-muted)]">
-                    <Phone class="h-5 w-5 text-[var(--color-primary)]" aria-hidden="true" />
-                    {profile.phone}
-                </p>
-                <p class="flex items-center gap-3 text-[var(--color-muted)]">
-                    <MapPin class="h-5 w-5 text-[var(--color-primary)]" aria-hidden="true" />
-                    {profile.location}
-                </p>
-
-                <div class="flex items-center gap-4 pt-3">
-                    <a href="/resume.pdf" download class="rounded-full bg-[var(--color-primary)] px-6 py-3 text-sm font-semibold text-white">Download Resume</a>
-                    <a
-                        href={profile.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="LinkedIn profile"
-                        class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-primary)]/40 hover:bg-[var(--color-primary)]/10"
-                    >
-                        <Link2 class="h-5 w-5" aria-hidden="true" />
-                    </a>
-                    <a
-                        href={profile.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="GitHub profile"
-                        class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-primary)]/40 hover:bg-[var(--color-primary)]/10"
-                    >
-                        <Code class="h-5 w-5" aria-hidden="true" />
-                    </a>
-                </div>
-            </div>
-
-            <form class="rounded-2xl border border-[var(--color-primary)]/35 bg-[var(--color-surface)] p-6" onsubmit={(e) => { e.preventDefault(); submit(); }} data-contact-item>
-                {#if successText}
-                    <div class="mb-4 rounded-lg border border-emerald-400/30 bg-emerald-400/10 px-3 py-2 text-sm text-emerald-300">{successText}</div>
-                {/if}
-
-                <div class="space-y-4">
-                    <div>
-                        <label for="contact-name" class="mb-1 block text-sm text-[var(--color-muted)]">Full Name</label>
-                        <input id="contact-name" type="text" class="w-full rounded-xl border border-[var(--color-primary)]/35 bg-transparent px-3 py-2 outline-none focus:border-[var(--color-primary)]" bind:value={form.name} />
-                        {#if errors.name}<p class="mt-1 text-xs text-rose-400">{errors.name}</p>{/if}
-                    </div>
-
-                    <div>
-                        <label for="contact-email" class="mb-1 block text-sm text-[var(--color-muted)]">Email Address</label>
-                        <input id="contact-email" type="email" class="w-full rounded-xl border border-[var(--color-primary)]/35 bg-transparent px-3 py-2 outline-none focus:border-[var(--color-primary)]" bind:value={form.email} />
-                        {#if errors.email}<p class="mt-1 text-xs text-rose-400">{errors.email}</p>{/if}
-                    </div>
-
-                    <div>
-                        <label for="contact-message" class="mb-1 block text-sm text-[var(--color-muted)]">Message</label>
-                        <textarea id="contact-message" rows="5" class="w-full rounded-xl border border-[var(--color-primary)]/35 bg-transparent px-3 py-2 outline-none focus:border-[var(--color-primary)]" bind:value={form.message}></textarea>
-                        {#if errors.message}<p class="mt-1 text-xs text-rose-400">{errors.message}</p>{/if}
-                    </div>
-
-                    <button type="submit" class="inline-flex w-full items-center justify-center rounded-full bg-[var(--color-primary)] px-6 py-3 text-sm font-semibold text-white disabled:opacity-60" disabled={form.processing}>
-                        {form.processing ? 'Sending...' : 'Send Message'}
-                    </button>
-                </div>
-            </form>
+            {/each}
         </div>
     </div>
 </section>

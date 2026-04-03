@@ -45,5 +45,5 @@
     <AchievementsSection />
     <ContactSection {profile} {flash} {errors} />
     <ResumeSection {profile} />
-    <Footer links={navLinks} />
+    <Footer links={navLinks} {profile} />
 </div>
