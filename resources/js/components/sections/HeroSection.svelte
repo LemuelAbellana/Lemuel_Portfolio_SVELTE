@@ -31,7 +31,7 @@
     ]);
 
     const waveTech =
-        'Programming Languages — JavaScript — PHP — HTML — CSS — TypeScript — Python — Frameworks — Laravel — Svelte — React — Inertia — Databases — MySQL — PostgreSQL — SQLite — Stacks — REST API — GitHub — Docker — NPM — ';
+        'Programming Languages — JavaScript — PHP — HTML — CSS — TypeScript — Python — Frameworks — Laravel — Svelte — React — Inertia — PHP — MySQL — Flutter — Livewire — Laravel — REST API — GitHub — Docker — NPM — ';
 
     $effect(() => {
         displayName;
@@ -108,9 +108,9 @@
             waveTimeline.to(
                 wavePathLeft,
                 {
-                    attr: { startOffset: '-0.5%' },
-                    duration: 18,
-                    ease: 'none',
+                    attr: { startOffset: '-68%' },
+                    duration: 8,
+                        ease: 'sine.inOut',
                 },
                 0
             );
@@ -118,9 +118,9 @@
             waveTimeline.to(
                 wavePathRight,
                 {
-                    attr: { startOffset: '0.5%' },
-                    duration: 18,
-                    ease: 'none',
+                    attr: { startOffset: '-68%' },
+                    duration: 8,
+                        ease: 'sine.inOut',
                 },
                 0
             );
@@ -166,7 +166,7 @@
                         </text>
 
                         <text class="sea-wave-text sea-wave-text-primary sea-wave-text-right" clip-path="url(#wave-right-cut)">
-                            <textPath href="#sea-wave-1" startOffset="88%" bind:this={wavePathRight}>{waveTech}</textPath>
+                            <textPath href="#sea-wave-1" startOffset="-88%" bind:this={wavePathRight}>{waveTech}</textPath>
                         </text>
                     </svg>
                 </div>
@@ -276,7 +276,7 @@
     }
 
     .sea-wave-text-right {
-        opacity: 0.7;
+        opacity: 0.95;
     }
 
     @media (max-width: 767px) {
