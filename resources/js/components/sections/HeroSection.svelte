@@ -205,6 +205,23 @@
             linear-gradient(rgba(148, 163, 184, 0.25) 1px, transparent 1px),
             linear-gradient(90deg, rgba(148, 163, 184, 0.25) 1px, transparent 1px);
         background-size: 46px 46px;
+        transform-origin: center;
+        will-change: transform;
+        animation: hero-grid-zoom 5s ease-in-out infinite;
+    }
+
+    @keyframes hero-grid-zoom {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.12);
+        }
+
+        100% {
+            transform: scale(1);
+        }
     }
 
     .name-tilt {

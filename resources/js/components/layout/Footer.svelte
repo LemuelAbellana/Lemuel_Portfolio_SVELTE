@@ -1,6 +1,5 @@
 <script>
     let { links = [], profile = {} } = $props();
-    const navLinks = $derived(links);
     const socials = $derived([
         {
             label: 'GitHub',
@@ -29,37 +28,45 @@
         },
     ]);
 
-    const tickerTop = 'Thanks for visiting my portfolio! ';
-    const tickerBottom = 'Code & Crafted with gold by Lemuel G. Abellana ';
+    const contactEmail = $derived(profile.email ?? 'labellana_23000002074@uic.edu.ph');
 
-    const scrollToSection = (id) => {
-        const el = document.getElementById(id);
-        if (el) {
-            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     $effect(() => {
-        navLinks;
+        links;
         socials.length;
+        contactEmail;
     });
 </script>
 
 <footer class="border-t border-[var(--color-primary)]/30 pt-10">
-    <div class="mx-auto w-full max-w-6xl px-6">
-        <p class="text-center text-[1.65rem] text-[var(--color-text)]">Connect with me on:</p>
-        <div class="mt-5 flex items-center justify-center gap-5">
+    <div class="mx-auto w-full max-w-4xl px-6">
+        <h2 class="text-center font-display text-[clamp(1.8rem,3.6vw,2.55rem)] leading-tight text-[var(--color-warm)]">
+            Let's build something amazing together.
+        </h2>
+
+        <a
+            href={`mailto:${contactEmail}`}
+            class="mx-auto mt-4 block w-fit text-center text-[clamp(1rem,2.2vw,1.2rem)] text-[var(--color-muted)] transition duration-200 hover:text-[var(--color-warm)]"
+            aria-label="Send an email"
+        >
+            {contactEmail}
+        </a>
+
+        <div class="mt-6 flex items-center justify-center gap-4">
             {#each socials as social}
                 <a
                     href={social.href || '#'}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Open ${social.label}`}
-                    class="rounded-full border border-transparent p-2 text-[var(--color-muted)] transition hover:border-[var(--color-primary)]/40 hover:text-[var(--color-text)]"
+                    class="rounded-full p-2 text-[var(--color-warm)]/90 transition duration-200 hover:scale-110 hover:text-[var(--color-warm)] hover:drop-shadow-[0_0_10px_rgba(253,185,39,0.45)]"
                     class:pointer-events-none={!social.href}
                     class:opacity-40={!social.href}
                 >
-                    <span class="h-6 w-6" aria-hidden="true">
+                    <span class="inline-flex h-9 w-9 items-center justify-center" aria-hidden="true">
                         {#if social.icon === 'github'}
                             <svg viewBox="0 0 24 24" fill="currentColor" class="h-full w-full" role="img" aria-hidden="true">
                                 <path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.9.6-3.5-1.2-3.5-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 .9 1.5 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.3-.3-4.7-1.1-4.7-5a3.9 3.9 0 0 1 1-2.7c-.1-.2-.4-1.3.1-2.7 0 0 .9-.3 2.8 1a9.8 9.8 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.5.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.7 5 .4.3.7 1 .7 2v3c0 .3.2.6.7.5A10 10 0 0 0 12 2z" />
@@ -86,69 +93,17 @@
             {/each}
         </div>
 
-        <div class="mt-10 overflow-hidden border-y border-[var(--color-primary)]/20 py-4">
-            <div class="footer-ticker footer-ticker-left text-[2.35rem] font-semibold leading-none text-[var(--color-muted)]/80">
-                <span>{tickerTop}{tickerTop}{tickerTop}{tickerTop}</span>
-                <span>{tickerTop}{tickerTop}{tickerTop}{tickerTop}</span>
-            </div>
-            <div class="footer-ticker footer-ticker-right mt-4 text-[2.2rem] font-semibold leading-none text-[var(--color-muted)]/80">
-                <span>{tickerBottom}{tickerBottom}{tickerBottom}{tickerBottom}</span>
-                <span>{tickerBottom}{tickerBottom}{tickerBottom}{tickerBottom}</span>
-            </div>
-        </div>
+        <button
+            type="button"
+            class="mx-auto mt-7 block text-xs uppercase tracking-[0.14em] text-[var(--color-warm)]/75 transition hover:text-[var(--color-warm)]"
+            aria-label="Back to top"
+            onclick={scrollToTop}
+        >
+            Back to Top
+        </button>
 
-        <div class="mt-8 flex flex-wrap items-center justify-center gap-3 pb-8 text-sm text-[var(--color-muted)]">
-            {#each navLinks as item}
-                <button type="button" class="hover:text-[var(--color-text)]" onclick={() => scrollToSection(item.id)} aria-label={`Go to ${item.label} section`}>
-                    {item.label}
-                </button>
-            {/each}
-            <span class="w-full text-center text-xs uppercase tracking-[0.16em] text-[var(--color-muted)]/80">© 2026 Lemuel G. Abellana</span>
+        <div class="mt-6 pb-8 text-center text-xs tracking-[0.04em] text-[var(--color-muted)]/80">
+            Designed &amp; Coded by Lemuel G. Abellana <span class="px-1 text-[var(--color-warm)]">|</span> © 2026
         </div>
     </div>
 </footer>
-
-<style>
-    .footer-ticker {
-        display: flex;
-        gap: 2.5rem;
-        white-space: nowrap;
-    }
-
-    .footer-ticker span {
-        min-width: max-content;
-    }
-
-    .footer-ticker-left {
-        animation: footer-marquee-left 28s linear infinite;
-    }
-
-    .footer-ticker-right {
-        animation: footer-marquee-right 32s linear infinite;
-    }
-
-    @keyframes footer-marquee-left {
-        from {
-            transform: translateX(0);
-        }
-        to {
-            transform: translateX(-50%);
-        }
-    }
-
-    @keyframes footer-marquee-right {
-        from {
-            transform: translateX(-50%);
-        }
-        to {
-            transform: translateX(0);
-        }
-    }
-
-    @media (max-width: 767px) {
-        .footer-ticker-left,
-        .footer-ticker-right {
-            font-size: 1.38rem;
-        }
-    }
-</style>

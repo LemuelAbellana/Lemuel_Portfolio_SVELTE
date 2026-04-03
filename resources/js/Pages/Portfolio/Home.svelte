@@ -8,9 +8,8 @@
     import ProjectsSection from '../../components/sections/ProjectsSection.svelte';
     import LeadershipSection from '../../components/sections/LeadershipSection.svelte';
     import AchievementsSection from '../../components/sections/AchievementsSection.svelte';
-    import ContactSection from '../../components/sections/ContactSection.svelte';
 
-    let { profile, flash = {}, errors = {} } = $props();
+    let { profile } = $props();
 
     const navLinks = $derived([
         { id: 'home', label: 'Home' },
@@ -19,7 +18,6 @@
         { id: 'projects', label: 'Projects' },
         { id: 'leadership', label: 'Leadership' },
         { id: 'achievements', label: 'Achievements' },
-        { id: 'contact', label: 'Contact' },
     ]);
 
     let loaded = $state(false);
@@ -41,6 +39,5 @@
     <ProjectsSection />
     <LeadershipSection />
     <AchievementsSection />
-    <ContactSection {profile} {flash} {errors} />
     <Footer links={navLinks} {profile} />
 </div>
