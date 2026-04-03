@@ -94,8 +94,8 @@
 <section id="achievements" class="section-wrap">
     <div class="mx-auto w-full px-6 md:px-10">
         <div class="achievements-header">
-            <h2 class="achievements-title">Achievements</h2>
-            <p class="achievements-subtitle">Scholarships, training experiences, and organizations that shape my growth as an engineer.</p>
+            <h2 class="achievements-title">ACHIEVEMENTS</h2>
+            <p class="achievements-subtitle">Scholarships, Training Experiences, and Organizations that Shape My Growth as an Aspring Software Engineer.</p>
         </div>
 
         <div class="achievement-viewport">

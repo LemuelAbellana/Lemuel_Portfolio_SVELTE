@@ -127,7 +127,7 @@
             <p class="inline-flex rounded-full bg-[var(--color-primary)]/14 px-4 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-muted)]">
                 About Me
             </p>
-            <h2 class="mt-4 text-3xl font-bold tracking-tight text-[var(--color-text)] md:text-5xl">Personal and Professional Snapshot</h2>
+            <h2 class="mt-4 text-3xl font-bold tracking-tight text-[var(--color-text)] md:text-5xl">PERSONAL AND PROFESSIONAL SNAPSHOT</h2>
             <p class="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[var(--color-muted)] md:text-base">
                 Explore my background, education, goals, and motivation through a guided profile carousel.
             </p>
