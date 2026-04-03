@@ -4,6 +4,9 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Lemuel G. Abellana | Portfolio</title>
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logolems-favicon.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/logolems-favicon.png" />
+        <link rel="apple-touch-icon" href="/assets/images/logolems-favicon.png" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
