@@ -313,20 +313,20 @@
 
     .megaphone-trigger {
         display: inline-flex;
-        height: 3.2rem;
-        width: 3.2rem;
+        height: auto;
+        width: auto;
         align-items: center;
         justify-content: center;
-        border-radius: 999px;
-        border: 1px solid color-mix(in srgb, var(--color-primary) 65%, transparent);
-        background: color-mix(in srgb, var(--color-primary) 26%, transparent);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        padding: 0;
+        border: none;
+        background: transparent;
+        box-shadow: none;
+        transition: transform 0.2s ease;
         cursor: pointer;
     }
 
     .megaphone-trigger:hover {
         transform: scale(1.08);
-        box-shadow: 0 0 14px color-mix(in srgb, var(--color-primary) 54%, transparent);
     }
 
     .megaphone-trigger:hover .megaphone-emoji {
