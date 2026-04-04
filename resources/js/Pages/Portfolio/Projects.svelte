@@ -51,7 +51,7 @@
 </svelte:head>
 
 <main class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)]">
-    <section class="mx-auto w-full max-w-6xl px-6 pb-20 pt-16 md:pt-20">
+    <section class="mx-auto w-full max-w-7xl px-4 pb-20 pt-16 md:px-6 md:pt-20">
         <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
             <div>
                 <p class="text-sm font-semibold uppercase tracking-[0.32em] text-[var(--color-muted)]">Portfolio</p>
