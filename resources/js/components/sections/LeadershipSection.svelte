@@ -19,7 +19,7 @@
         {
             date: '2023–2024',
             role: 'Club Mayor',
-            org: 'VIBE Club - UIC',
+            org: 'Virtual Initiative for Building Engagement - UIC',
             logo: '/assets/images/vibelogo.png',
             position: 'right',
             useAvatar: false,

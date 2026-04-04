@@ -16,7 +16,7 @@
     const entries = [
         {
             date: '2025-2026',
-            short: 'GDG',
+            short: 'GDGOC-UIC',
             role: 'Vice Mayor',
             title: 'Google Developer Groups on Campus - UIC',
             logo: '/assets/images/gdglogo.png',
@@ -33,7 +33,7 @@
             date: '2023-2024',
             short: 'VIBE',
             role: 'Club Mayor',
-            title: 'VIBE Club - UIC',
+            title: 'Virtual Initiative for Building Engagement - UIC',
             logo: '/assets/images/vibelogo.png',
             align: 'right',
             logoSide: 'left',
@@ -47,7 +47,7 @@
             date: '2023-2024',
             short: 'CCS',
             role: 'UIC-CCS Leader / Spearheader',
-            title: 'NSTP-CWTS',
+            title: 'National Service Training Program-CWTS',
             logo: '/assets/images/ccslogo.png',
             align: 'left',
             logoSide: 'right',
@@ -74,10 +74,11 @@
         {#each entries as entry}
             <section class="dashboard-grid" class:is-right={entry.align === 'right'} class:is-left={entry.align !== 'right'}>
                 <div class={`details-wrap ${entry.align === 'right' ? 'details-right' : 'details-left'}`}>
-                    <div class="short-stack">
-                        <div class="short-label">{entry.short}</div>
-                        <div class="short-mark">{entry.short}</div>
-                    </div>
+                    {#if entry.short}
+                        <div class="short-stack">
+                            <div class="short-mark">{entry.short}</div>
+                        </div>
+                    {/if}
                     <h2 class="role-title">{entry.role}</h2>
                     <p class="org-name">{entry.title}</p>
                     <div class="accent-line"></div>
@@ -149,20 +150,6 @@
         line-height: 0.95;
         margin: 0;
         letter-spacing: 0;
-        display: block;
-        width: max-content;
-    }
-
-    .short-label {
-        font-family: var(--font-sans);
-        font-kerning: none;
-        margin: 0;
-        margin-bottom: -0.25rem;
-        font-size: clamp(2rem, 6.5vw, 4rem);
-        line-height: 0.95;
-        letter-spacing: 0;
-        color: color-mix(in srgb, var(--color-text) 15%, transparent);
-        font-weight: 800;
         display: block;
         width: max-content;
     }

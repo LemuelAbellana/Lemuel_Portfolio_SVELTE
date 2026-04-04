@@ -2,9 +2,29 @@
     import { projects } from '../../lib/projects';
 
     const categories = ['All', ...new Set(projects.map((project) => project.category))];
+    const imageExtensions = ['webp', 'jpg', 'png'];
 
     let query = $state('');
     let selectedCategory = $state('All');
+    let imageStageByName = $state({});
+
+    const getProjectSlug = (projectName) =>
+        projectName
+            .toLowerCase()
+            .replace(/[^a-z0-9\s-]/g, '')
+            .trim()
+            .replace(/\s+/g, '-');
+
+    const getProjectImageSrc = (projectName) => {
+        const stage = imageStageByName[projectName] ?? 0;
+        if (stage >= imageExtensions.length) return null;
+        return `/assets/images/projects/${getProjectSlug(projectName)}.${imageExtensions[stage]}`;
+    };
+
+    const handleProjectImageError = (projectName) => {
+        const currentStage = imageStageByName[projectName] ?? 0;
+        imageStageByName[projectName] = currentStage + 1;
+    };
 
     const filteredProjects = $derived(
         projects.filter((project) => {
@@ -81,14 +101,30 @@
         {:else}
             <div class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
                 {#each filteredProjects as project, i}
-                    <article class="group rounded-2xl border border-[var(--color-border)] bg-white/[0.04] p-5 shadow-[0_16px_40px_rgba(0,0,0,0.18)] transition hover:-translate-y-1 hover:border-[var(--color-warm)]">
+                    <article class="group rounded-2xl border border-[var(--color-primary)]/45 bg-[color-mix(in_srgb,var(--color-surface)_92%,black)] p-6 shadow-[0_12px_38px_rgba(0,0,0,0.35)] transition hover:-translate-y-1">
                         <div class="mb-3 flex items-center justify-between gap-3">
                             <span class="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-warm)]">#{String(i + 1).padStart(2, '0')}</span>
                             <span class="rounded-full border border-[var(--color-border)] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--color-muted)]">{project.category}</span>
                         </div>
 
-                        <h2 class="text-lg font-semibold text-[var(--color-text)]">{project.name}</h2>
-                        <p class="mt-3 text-sm leading-relaxed text-[var(--color-muted)]">{project.description}</p>
+                        <h2 class="min-h-[5rem] text-[clamp(1.25rem,1.5vw,1.85rem)] font-bold leading-tight text-[var(--color-text)]">{project.name}</h2>
+                        <p class="min-h-[4.5rem] text-[clamp(0.85rem,0.95vw,1.1rem)] leading-snug text-[var(--color-muted)]">{project.description}</p>
+
+                        <div class="mt-2 mb-4 overflow-hidden rounded-xl border border-[var(--color-primary)]/40 bg-[var(--color-bg)]/70 aspect-[16/10]">
+                            {#if getProjectImageSrc(project.name)}
+                                <img
+                                    src={getProjectImageSrc(project.name)}
+                                    alt={`${project.name} preview`}
+                                    class="h-full w-full object-cover"
+                                    loading="lazy"
+                                    onerror={() => handleProjectImageError(project.name)}
+                                />
+                            {:else}
+                                <div class="flex h-full w-full items-center justify-center bg-[radial-gradient(circle_at_20%_10%,rgba(85,37,131,0.28),transparent_52%),linear-gradient(180deg,rgba(9,9,18,0.72),rgba(8,8,15,0.92))] px-4 text-center text-sm font-semibold text-[var(--color-muted)]">
+                                    Image will appear here once uploaded to /assets/images/projects
+                                </div>
+                            {/if}
+                        </div>
 
                         <div class="mt-4">
                             <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-muted)]">Role</p>
@@ -97,7 +133,7 @@
 
                         <div class="mt-4 flex flex-wrap gap-2">
                             {#each project.tags as tag}
-                                <span class="rounded-full border border-[var(--color-border)] px-3 py-1 text-xs text-[var(--color-muted)]">{tag}</span>
+                                <span class="rounded-full border border-[var(--color-primary)]/65 bg-[var(--color-primary)]/12 px-2.5 py-1 text-xs font-semibold text-[var(--color-text)]">{tag}</span>
                             {/each}
                         </div>
 

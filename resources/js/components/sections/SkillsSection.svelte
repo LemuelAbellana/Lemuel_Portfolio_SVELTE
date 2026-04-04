@@ -19,6 +19,7 @@
         { name: 'Express JS', logo: 'https://skillicons.dev/icons?i=express' },
         { name: 'MySQL', logo: 'https://skillicons.dev/icons?i=mysql' },
         { name: 'Flutter', logo: 'https://skillicons.dev/icons?i=flutter' },
+        { name: 'Docker', logo: 'https://skillicons.dev/icons?i=docker' },
         { name: 'NodeJS', logo: 'https://skillicons.dev/icons?i=nodejs' },
         { name: 'MongoDB', logo: 'https://skillicons.dev/icons?i=mongodb' },
     ];

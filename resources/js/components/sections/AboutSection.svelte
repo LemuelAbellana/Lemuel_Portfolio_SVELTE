@@ -135,8 +135,8 @@
 
         <div class="mt-10" data-about-item>
             <div class="relative isolate overflow-hidden rounded-[2rem] border border-[var(--color-primary)]/25 bg-[color-mix(in_srgb,var(--color-surface)_92%,black)] shadow-[0_24px_60px_rgba(0,0,0,0.25)]" role="region" aria-label="About section carousel" onmouseenter={stopAutoSlide} onmouseleave={startAutoSlide}>
-                <div class="relative z-10 grid gap-0 lg:h-[560px] lg:grid-cols-[0.95fr_1.35fr]">
-                    <div class="min-h-[300px] border-b border-[var(--color-primary)]/20 bg-[var(--color-primary)]/8 lg:h-full lg:min-h-0 lg:border-b-0 lg:border-r">
+                <div class="relative z-10 grid h-[560px] gap-0 md:h-[620px] lg:h-[560px] lg:grid-cols-[0.95fr_1.35fr]">
+                    <div class="min-h-[240px] border-b border-[var(--color-primary)]/20 bg-[var(--color-primary)]/8 md:min-h-[300px] lg:h-full lg:min-h-0 lg:border-b-0 lg:border-r">
                         {#if showProfileImage}
                             <img
                                 src={profileImageSrc}
@@ -151,10 +151,10 @@
                         {/if}
                     </div>
 
-                    <div class="flex min-h-[300px] flex-col p-7 md:p-10 lg:h-full lg:min-h-0">
-                        <div class="flex-1 overflow-y-auto pr-1">
+                    <div class="flex min-h-0 flex-col p-7 md:p-10 lg:h-full">
+                        <div class="flex-1 overflow-y-auto pr-1 min-h-0">
                             {#key activeIndex}
-                                <div class="min-h-[230px]" in:fade={{ duration: 900, delay: 900 }} out:fade={{ duration: 900 }}>
+                                <div class="min-h-[160px] md:min-h-[230px]" in:fade={{ duration: 260 }} out:fade={{ duration: 180 }}>
                                     <p class="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-muted)]">{activeSlide.lead}</p>
                                     <h3 class="mt-3 text-3xl font-extrabold text-[var(--color-warm)] md:text-5xl">{activeSlide.label}</h3>
                                     <p class="mt-4 max-w-2xl text-base leading-relaxed text-[var(--color-muted)]">{activeSlide.content}</p>
@@ -171,18 +171,6 @@
                                     {/if}
                                 </div>
                             {/key}
-                        </div>
-
-                        <div class="mt-6 flex flex-wrap gap-2">
-                            {#each slides as slide, i}
-                                <button
-                                    type="button"
-                                    class={`inline-flex min-w-[170px] items-center justify-center rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] transition ${activeIndex === i ? 'bg-[var(--color-warm)] text-[var(--color-bg)]' : 'border border-[var(--color-primary)]/35 text-[var(--color-muted)] hover:border-[var(--color-warm)] hover:text-[var(--color-warm)]'}`}
-                                    onclick={() => goTo(i)}
-                                >
-                                    {slide.label}
-                                </button>
-                            {/each}
                         </div>
                     </div>
                 </div>
