@@ -26,7 +26,7 @@
     background-color: var(--color-bg);
     scroll-behavior: smooth;
     --grid-zoom-duration: 5000ms;
-    --grid-sync-delay: 0ms;
+    --grid-zoom-scale: 1;
 }
 
 body {
@@ -119,20 +119,5 @@ textarea:focus-visible {
     background-size: 46px 46px;
     transform-origin: center;
     will-change: transform;
-    animation: grid-zoom-sync var(--grid-zoom-duration) ease-in-out infinite;
-    animation-delay: var(--grid-sync-delay);
-}
-
-@keyframes grid-zoom-sync {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.12);
-    }
-
-    100% {
-        transform: scale(1);
-    }
+    transform: scale(var(--grid-zoom-scale));
 }

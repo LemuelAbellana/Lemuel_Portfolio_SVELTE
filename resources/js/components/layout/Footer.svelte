@@ -36,8 +36,10 @@
     });
 </script>
 
-<footer class="border-t border-[var(--color-primary)]/30 pt-10">
-    <div class="mx-auto w-full max-w-4xl px-6">
+<footer class="relative isolate overflow-hidden border-t border-[var(--color-primary)]/30 pt-10">
+    <div class="section-grid-zoom" aria-hidden="true"></div>
+
+    <div class="relative z-10 mx-auto w-full max-w-4xl px-6">
         <h2 class="text-center font-display text-[clamp(1.8rem,3.6vw,2.55rem)] leading-tight text-[var(--color-warm)]">
             LET'S BUILD SOMETHING TOGETHER.
         </h2>
