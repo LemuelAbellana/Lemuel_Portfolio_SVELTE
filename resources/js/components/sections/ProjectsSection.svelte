@@ -29,9 +29,9 @@
     <div class="mx-auto w-full max-w-6xl px-6">
         <SectionTitle number="03" title="Featured Projects" subtitle="A focused selection of three projects. Visit the projects page to explore the full portfolio." />
 
-        <div class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div class="grid grid-cols-1 items-stretch gap-5 md:grid-cols-2 xl:grid-cols-3">
             {#each featuredProjects as project, i}
-                <div bind:this={cardNodes[i]}>
+                <div class="h-full" bind:this={cardNodes[i]}>
                     <ProjectCard
                         index={i + 1}
                         name={project.name}

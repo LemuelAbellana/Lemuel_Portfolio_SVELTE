@@ -48,7 +48,7 @@
     onmouseleave={onLeave}
     role="region"
     aria-label={`Project ${index}: ${cardTitle}`}
-    class="project-card relative rounded-2xl border border-[var(--color-primary)]/40 bg-[var(--color-surface)] p-6 shadow-[inset_0_0_24px_rgba(99,102,241,0.08)]"
+    class="project-card relative flex h-full flex-col rounded-2xl border border-[var(--color-primary)]/40 bg-[var(--color-surface)] p-6 shadow-[inset_0_0_24px_rgba(99,102,241,0.08)]"
 >
     <span class="font-display absolute right-4 top-2 text-7xl text-white/5">{String(index).padStart(2, '0')}</span>
     <ArrowUpRight class="absolute right-4 top-4 h-5 w-5 text-[var(--color-muted)]" aria-hidden="true" />
@@ -65,8 +65,8 @@
         </ul>
     </div>
 
-    <p class="relative mb-4 text-sm text-[var(--color-muted)]"><span class="text-[var(--color-text)]">Outcome:</span> {outcome}</p>
-    <div class="relative flex flex-wrap gap-2">
+    <p class="relative mb-4 min-h-[4.5rem] text-sm text-[var(--color-muted)]"><span class="text-[var(--color-text)]">Outcome:</span> {outcome}</p>
+    <div class="relative mt-auto flex flex-wrap gap-2">
         {#each tags as tag}
             <span class="rounded-full border border-[var(--color-primary)]/35 px-2.5 py-1 text-xs font-mono text-[var(--color-text)]">
                 {tag}
