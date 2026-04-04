@@ -46,12 +46,13 @@
 >
     <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
         <button type="button" class="inline-flex items-center" onclick={() => scrollToSection('home')} aria-label="Go to Home section">
-            <img src="/assets/images/logolems2.png" alt="Lems logo" class="h-11 w-auto object-contain" />
+            <img src="/assets/images/logolems.png" alt="Lems logo" class="h-11 w-auto object-contain" />
+            <span class="brand-name hidden sm:inline">LEMUEL ABELLANA</span>
         </button>
 
         <div class="hidden items-center gap-8 md:flex">
             {#each navLinks as item}
-                <button type="button" class="text-sm font-medium text-[var(--color-text)]/90 hover:text-[var(--color-primary)]" onclick={() => scrollToSection(item.id)} aria-label={`Go to ${item.label} section`}>
+                <button type="button" class="text-sm font-medium text-[var(--color-text)]/90 transition-colors hover:text-[var(--color-warm)]" onclick={() => scrollToSection(item.id)} aria-label={`Go to ${item.label} section`}>
                     {item.label}
                 </button>
             {/each}
@@ -74,7 +75,7 @@
     <div id="mobile-menu" bind:this={mobileMenu} class="overflow-hidden md:hidden" style="height: 0; opacity: 0;">
         <div class="space-y-2 border-t border-[var(--color-primary)]/20 px-6 py-4">
             {#each navLinks as item}
-                <button type="button" class="block w-full rounded-lg px-3 py-2 text-left text-sm text-[var(--color-text)] hover:bg-[var(--color-primary)]/10" onclick={() => scrollToSection(item.id)} aria-label={`Go to ${item.label} section`}>
+                <button type="button" class="block w-full rounded-lg px-3 py-2 text-left text-sm text-[var(--color-text)] transition-colors hover:bg-[var(--color-primary)]/10 hover:text-[var(--color-warm)]" onclick={() => scrollToSection(item.id)} aria-label={`Go to ${item.label} section`}>
                     {item.label}
                 </button>
             {/each}
@@ -84,3 +85,17 @@
         </div>
     </div>
 </nav>
+
+<style>
+    .brand-name {
+        margin-left: 0.72rem;
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: clamp(1rem, 1.45vw, 1.45rem);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0.02em;
+        color: var(--color-warm);
+        text-shadow: 0 0 18px rgba(253, 185, 39, 0.22);
+    }
+</style>

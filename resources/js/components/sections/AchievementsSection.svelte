@@ -1,54 +1,13 @@
 <script>
+    import { cubicInOut } from 'svelte/easing';
     import { fly } from 'svelte/transition';
-    import { Trophy } from 'lucide-svelte';
-
-    const achievements = [
-        {
-            title: 'Top 100 Scholars Leadership Camp Region XI',
-            description:
-                'Selected among the Top 100 scholars in Region XI, recognized for leadership, collaboration, and initiative during an intensive development camp focused on service, innovation, and community impact.',
-        },
-        {
-            title: 'DOST-SEI Scholar 2023-2027',
-            description: 'Awarded a merit scholarship supporting my engineering studies based on strong academic performance and leadership potential.',
-        },
-        {
-            title: 'NASA Space Apps Challenge 2025 Participant',
-            description:
-                'Collaborated with a multidisciplinary team to prototype a practical solution for a real-world challenge during the global NASA hackathon.',
-        },
-        {
-            title: 'AI Engineering Training - DurianPy Davao',
-            description: 'Completed focused training in AI engineering fundamentals, including applied workflows for practical model-driven solutions.',
-        },
-        {
-            title: 'Ignacian Marian Leadership Training Participant',
-            description: 'Completed values-centered leadership formation focused on service, team accountability, and mission-driven collaboration.',
-        },
-        {
-            title: 'Member - ONSSE',
-            description: 'Actively participated in scholar-led activities that support academic excellence, peer growth, and community engagement.',
-        },
-        {
-            title: 'Member - DOST START',
-            description: 'Contributed to student initiatives and technical learning circles that strengthen innovation and collaborative problem-solving.',
-        },
-        {
-            title: 'TESDA World Skills Olympics - District Wide Cybersecurity Competition Champion',
-            description: 'Champion in the district-wide cybersecurity competition and selected representative for Davao City.',
-        },
-        {
-            title: 'TESDA World Skills Olympics - Regional Wide Cybersecurity Competition Champion',
-            description: 'Champion in the regional-wide cybersecurity competition and selected representative for Davao Region (Region XI).',
-        },
-    ];
+    import { achievements } from '../../lib/achievements';
 
     let flippedCards = $state({});
     let currentIndex = $state(0);
     let navDirection = $state(1);
-    let isNavigating = $state(false);
 
-    const NAV_DURATION = 280;
+    const NAV_DURATION = 380;
 
     function handleFlip(index) {
         flippedCards[index] = !flippedCards[index];
@@ -71,23 +30,13 @@
     }
 
     function previousAchievement() {
-        if (isNavigating) return;
         navDirection = -1;
-        isNavigating = true;
         currentIndex = normalizeIndex(currentIndex - 1);
-        setTimeout(() => {
-            isNavigating = false;
-        }, NAV_DURATION);
     }
 
     function nextAchievement() {
-        if (isNavigating) return;
         navDirection = 1;
-        isNavigating = true;
         currentIndex = normalizeIndex(currentIndex + 1);
-        setTimeout(() => {
-            isNavigating = false;
-        }, NAV_DURATION);
     }
 </script>
 
@@ -114,15 +63,15 @@
                             aria-label={`Flip achievement card: ${achievement.title}`}
                             onclick={() => handleFlip(index)}
                             onkeydown={(event) => handleKeydown(event, index)}
-                            in:fly={{ x: navDirection * 26, duration: NAV_DURATION }}
-                            out:fly={{ x: navDirection * -26, duration: NAV_DURATION }}
+                            in:fly={{ x: navDirection * 44, duration: NAV_DURATION, easing: cubicInOut }}
+                            out:fly={{ x: navDirection * -44, duration: NAV_DURATION, easing: cubicInOut }}
                         >
                             <div class="flip-card-inner">
-                                <div class="flip-face rounded-2xl border border-[var(--color-primary)]/35 bg-[var(--color-surface)] p-6 md:p-7">
-                                    <div class="mb-5 h-1 w-full rounded-full bg-[var(--color-warm)]"></div>
-                                    <Trophy class="face-anim anim-1 mx-auto mb-5 h-7 w-7 text-[var(--color-primary)]" aria-hidden="true" />
-                                    <h3 class="face-anim anim-2 text-center text-xl font-semibold leading-tight md:text-2xl">{achievement.title}</h3>
-                                    <p class="face-anim anim-3 mt-5 text-center text-sm text-[var(--color-text-muted)]">Click to flip</p>
+                                <div class="flip-face front-media rounded-2xl border border-[var(--color-primary)]/35 bg-[var(--color-surface)]">
+                                    <img class="front-image" src={achievement.image} alt={achievement.title} loading="lazy" />
+                                    <div class="front-overlay">
+                                        <p class="front-hint">Click to flip</p>
+                                    </div>
                                 </div>
 
                                 <div class="flip-face flip-back rounded-2xl border border-[var(--color-primary)]/35 bg-[var(--color-surface)] p-6 md:p-7">
@@ -139,13 +88,13 @@
         </div>
 
         <div class="carousel-controls">
-            <button type="button" class="carousel-button" aria-label="Previous achievement" onclick={previousAchievement} disabled={isNavigating}>
+            <button type="button" class="carousel-button" aria-label="Previous achievement" onclick={previousAchievement}>
                 &lt;
             </button>
             <a class="gallery-button" href="/achievements-gallery" aria-label="View achievements gallery">
                 View Gallery
             </a>
-            <button type="button" class="carousel-button" aria-label="Next achievement" onclick={nextAchievement} disabled={isNavigating}>
+            <button type="button" class="carousel-button" aria-label="Next achievement" onclick={nextAchievement}>
                 &gt;
             </button>
         </div>
@@ -261,6 +210,32 @@
         position: absolute;
         inset: 0;
         backface-visibility: hidden;
+    }
+
+    .front-media {
+        overflow: hidden;
+    }
+
+    .front-image {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+    }
+
+    .front-overlay {
+        position: absolute;
+        inset: auto 0 0;
+        padding: 1.1rem 1.1rem 1rem;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 4%, rgba(0, 0, 0, 0.72) 54%, rgba(0, 0, 0, 0.86) 100%);
+    }
+
+    .front-hint {
+        margin: 0;
+        text-align: center;
+        font-size: 0.8rem;
+        color: rgba(246, 246, 251, 0.88);
     }
 
     .flip-back {

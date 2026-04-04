@@ -53,3 +53,7 @@ Route::get('/projects', function () {
         ],
     ]);
 })->name('projects');
+
+Route::get('/achievements-gallery', function () {
+    return Inertia::render('Portfolio/AchievementsGallery');
+})->name('achievements.gallery');
