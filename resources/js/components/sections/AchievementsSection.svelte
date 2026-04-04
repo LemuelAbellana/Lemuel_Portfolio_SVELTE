@@ -65,13 +65,30 @@
 
     function formatAchievementDescription(text) {
         if (!text) return '';
-        if (/\s/.test(text)) return text;
 
-        const spaced = text
+        const conjunctions = new Set(['and', 'or', 'for', 'nor', 'but', 'yet', 'so', 'a', 'an', 'the', 'of', 'to', 'in', 'on', 'at', 'with', 'by']);
+        const acronyms = new Set(['AI', 'DOST', 'NASA', 'SEI', 'UIC', 'IO', 'XI']);
+
+        const normalized = text
             .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
-            .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2');
+            .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
+            .replace(/([A-Za-z])(\d)/g, '$1 $2')
+            .replace(/(\d)([A-Za-z])/g, '$1 $2')
+            .replace(/\s+/g, ' ')
+            .trim();
 
-        return spaced.charAt(0).toUpperCase() + spaced.slice(1);
+        return normalized
+            .split(' ')
+            .map((word, index) => {
+                const upperWord = word.toUpperCase();
+                if (acronyms.has(upperWord)) return upperWord;
+
+                const lowerWord = word.toLowerCase();
+                if (index !== 0 && conjunctions.has(lowerWord)) return lowerWord;
+
+                return lowerWord.charAt(0).toUpperCase() + lowerWord.slice(1);
+            })
+            .join(' ');
     }
 </script>
 
