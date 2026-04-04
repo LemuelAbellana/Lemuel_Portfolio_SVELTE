@@ -81,8 +81,10 @@
     });
 </script>
 
-<section id="leadership" class="section-wrap" bind:this={section}>
-    <div class="mx-auto w-full max-w-6xl px-6">
+<section id="leadership" class="section-wrap relative isolate overflow-hidden" bind:this={section}>
+    <div class="section-grid-zoom" aria-hidden="true"></div>
+
+    <div class="relative z-10 mx-auto w-full max-w-6xl px-6">
         <SectionTitle number="04" title="Leadership" subtitle="A timeline of student leadership roles focused on technical growth, organization, and community impact." />
 
         <div class="relative pl-10">

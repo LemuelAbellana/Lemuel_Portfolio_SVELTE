@@ -98,8 +98,10 @@
     };
 </script>
 
-<section id="skills" class="section-wrap" bind:this={section}>
-    <div class="w-full px-6">
+<section id="skills" class="section-wrap relative isolate overflow-hidden" bind:this={section}>
+    <div class="section-grid-zoom" aria-hidden="true"></div>
+
+    <div class="relative z-10 w-full px-6">
         <div class="skills-header">
             <h2 class="skills-title">SKILLS</h2>
             <p class="skills-subtitle">A practical full-stack skillset shaped by projects, leadership work, and continuous technical training.</p>
@@ -107,7 +109,7 @@
     </div>
 
     <div
-        class="skills-cinema mt-8"
+        class="skills-cinema relative z-10 mt-8"
         role="region"
         aria-label="Technology carousel"
         onpointermove={handlePointerMove}

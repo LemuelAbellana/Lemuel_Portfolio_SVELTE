@@ -25,6 +25,8 @@
     color: var(--color-text);
     background-color: var(--color-bg);
     scroll-behavior: smooth;
+    --grid-zoom-duration: 5000ms;
+    --grid-sync-delay: 0ms;
 }
 
 body {
@@ -91,5 +93,46 @@ textarea:focus-visible {
 
     to {
         background-position: 0 -96px;
+    }
+}
+
+.section-grid-zoom {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.section-grid-zoom::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+}
+
+.hero-grid,
+.section-grid-zoom::before {
+    opacity: 0.16;
+    background-image:
+        linear-gradient(rgba(148, 163, 184, 0.25) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.25) 1px, transparent 1px);
+    background-size: 46px 46px;
+    transform-origin: center;
+    will-change: transform;
+    animation: grid-zoom-sync var(--grid-zoom-duration) ease-in-out infinite;
+    animation-delay: var(--grid-sync-delay);
+}
+
+@keyframes grid-zoom-sync {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+
+    100% {
+        transform: scale(1);
     }
 }

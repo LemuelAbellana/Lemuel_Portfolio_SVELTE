@@ -120,7 +120,7 @@
 </script>
 
 <section id="about" class="section-wrap relative isolate overflow-hidden pt-10 md:pt-14" bind:this={section}>
-    <div class="about-dots-bg" aria-hidden="true"></div>
+    <div class="section-grid-zoom" aria-hidden="true"></div>
 
     <div class="relative z-10 mx-auto w-full max-w-6xl px-6">
         <div class="mx-auto max-w-3xl text-center" data-about-item>

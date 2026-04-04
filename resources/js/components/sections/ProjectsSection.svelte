@@ -25,8 +25,10 @@
     });
 </script>
 
-<section id="projects" class="section-wrap" bind:this={section}>
-    <div class="mx-auto w-full max-w-6xl px-6">
+<section id="projects" class="section-wrap relative isolate overflow-hidden" bind:this={section}>
+    <div class="section-grid-zoom" aria-hidden="true"></div>
+
+    <div class="relative z-10 mx-auto w-full max-w-6xl px-6">
         <SectionTitle number="03" title="Featured Projects" subtitle="A focused selection of three projects. Visit the projects page to explore the full portfolio." />
 
         <div class="grid grid-cols-1 items-stretch gap-5 md:grid-cols-2 xl:grid-cols-3">

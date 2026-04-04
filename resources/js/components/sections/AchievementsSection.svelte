@@ -51,8 +51,10 @@
     }
 </script>
 
-<section id="achievements" class="section-wrap">
-    <div class="mx-auto w-full px-6 md:px-10">
+<section id="achievements" class="section-wrap relative isolate overflow-hidden">
+    <div class="section-grid-zoom" aria-hidden="true"></div>
+
+    <div class="relative z-10 mx-auto w-full px-6 md:px-10">
         <div class="achievements-header">
             <h2 class="achievements-title">ACHIEVEMENTS AND PARTICIPATIONS</h2>
             <p class="achievements-subtitle">Scholarships, Training Experiences, and Organizations that Shape My Growth as an Aspring Software Engineer.</p>
