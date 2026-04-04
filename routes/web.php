@@ -18,7 +18,7 @@ Route::get('/', function () {
             'twitter' => 'https://x.com',
             'instagram' => 'https://www.instagram.com',
             'whatsapp' => 'https://wa.me/639512575802',
-            'facebook' => 'https://www.facebook.com',
+            'facebook' => 'https://www.facebook.com/sen.gomz',
             'photo' => null,
         ],
     ]);
@@ -48,7 +48,7 @@ Route::get('/projects', function () {
             'twitter' => 'https://x.com',
             'instagram' => 'https://www.instagram.com',
             'whatsapp' => 'https://wa.me/639512575802',
-            'facebook' => 'https://www.facebook.com',
+            'facebook' => 'https://www.facebook.com/sen.gomz',
             'photo' => null,
         ],
     ]);
@@ -68,7 +68,7 @@ Route::get('/leadership', function () {
             'twitter' => 'https://x.com',
             'instagram' => 'https://www.instagram.com',
             'whatsapp' => 'https://wa.me/639512575802',
-            'facebook' => 'https://www.facebook.com',
+            'facebook' => 'https://www.facebook.com/sen.gomz',
             'photo' => null,
         ],
     ]);

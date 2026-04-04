@@ -70,6 +70,34 @@
         selectedImage = null;
     };
 
+    const enforceProjectKeywordsUppercase = (text) => {
+        if (!text) return '';
+
+        return text
+            .replace(/\buic\b/gi, 'UIC')
+            .replace(/\bpwa\b/gi, 'PWA')
+            .replace(/\bitso\b/gi, 'ITSO')
+            .replace(/\brpic\b/gi, 'RPIC')
+            .replace(/\bdost\b/gi, 'DOST')
+            .replace(/\bai\b/gi, 'AI')
+            .replace(/\bnasa\b/gi, 'NASA')
+            .replace(/\bbook[\s-]*it[\s-]*now\b/gi, 'BOOK IT NOW');
+    };
+
+    const toCamelCaseText = (text) => {
+        if (!text) return '';
+
+        const camelCaseText = text
+            .split(/(\s+)/)
+            .map((chunk) => {
+                if (!chunk.trim()) return chunk;
+                return chunk.charAt(0).toUpperCase() + chunk.slice(1).toLowerCase();
+            })
+            .join('');
+
+        return enforceProjectKeywordsUppercase(camelCaseText);
+    };
+
     const handleWindowKeydown = (event) => {
         if (event.key === 'Escape' && selectedImage) {
             closeImageModal();
@@ -102,7 +130,7 @@
     <span class="font-display absolute right-4 top-2 text-7xl text-white/5">{String(index).padStart(2, '0')}</span>
     <ArrowUpRight class="absolute right-4 top-4 h-5 w-5 text-[var(--color-muted)]" aria-hidden="true" />
     <h3 class="relative mb-1 min-h-[5rem] pr-8 text-center text-[clamp(1.25rem,1.5vw,1.85rem)] font-bold leading-tight text-[var(--color-warm)] md:min-h-[5.5rem]">{cardTitle}</h3>
-    <p class="relative mb-2 min-h-[4.5rem] text-justify text-[clamp(0.85rem,0.95vw,1.1rem)] leading-snug text-[var(--color-muted)] md:min-h-[5rem]">{description}</p>
+    <p class="relative mb-2 min-h-[4.5rem] text-justify text-[clamp(0.85rem,0.95vw,1.1rem)] leading-snug text-[var(--color-muted)] md:min-h-[5rem]">{toCamelCaseText(description)}</p>
 
     <div class="relative mb-4 overflow-hidden rounded-xl border border-[var(--color-primary)]/40 bg-[var(--color-bg)]/70 aspect-[4/3]">
         {#if imageSrc}

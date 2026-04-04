@@ -1,12 +1,12 @@
 export const achievements = [
     {
         title: 'DOST SEI Scholar 2023 - 2027',
-        description: 'awardedByTheDostSeiScholarshipForAcademicExcellenceSupportingMyEngineeringEducationAndLongTermGrowthInTechnologyAndInnovation',
+        description: 'awardedByTheDostSeiScholarshipForAcademicExcellenceSupportingMyInformationTechnologyEducationAndLongTermGrowthInTechnologyAndInnovation',
         image: '/assets/images/achievements/dost-sei.jpg',
     },
     {
         title: 'TESDA World Skills Olympics - Regional Wide Cybersecurity Competition Champion',
-        description: 'wonTheRegionalCybersecurityChampionshipAndWasSelectedAsARepresentativeOfDavaoRegionRegionXi',
+        description: 'wonTheRegionalCybersecurityChampionshipAndWasSelectedAsARepresentativeOfDavaoRegionRegionXI',
         image: '/assets/images/achievements/RSO.jpg',
     },
     {
@@ -21,7 +21,7 @@ export const achievements = [
     },
     {
         title: 'Top 100 Scholars Leadership Camp Region XI',
-        description: 'selectedAmongRegionXisTop100ScholarsForDemonstratedLeadershipCollaborationAndInitiativeInServiceAndImpactDrivenActivities',
+        description: 'Selected Among Region XI Top 100 Scholars For Demonstrated Leadership Collaboration And Initiative InService And Impact Driven Activities',
         image: '/assets/images/achievements/slc.jpg',
     },
     {
@@ -31,7 +31,7 @@ export const achievements = [
     },
     {
         title: 'AI Engineering Training Participant - DurianPy Davao',
-        description: 'completedAppliedAiEngineeringTrainingStrengtheningPracticalWorkflowsForBuildingModelDrivenAndSolutionFocusedProjects',
+        description: 'completedAppliedAIEngineeringTrainingStrengtheningPracticalWorkflowsForBuildingModelDrivenAndSolutionFocusedProjects',
         image: '/assets/images/achievements/durianpy.jpg',
     },
     {

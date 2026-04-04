@@ -87,11 +87,14 @@
                                     </div>
                                 </div>
 
-                                <div class="flip-face flip-back rounded-2xl border border-[var(--color-primary)]/35 bg-[var(--color-surface)] p-6 md:p-7">
-                                    <div class="mb-5 h-1 w-full rounded-full bg-[var(--color-warm)]"></div>
-                                    <h3 class="face-anim anim-1 mb-4 text-center text-lg font-semibold md:text-xl">{achievement.title}</h3>
-                                    <p class="face-anim anim-2 break-words text-center text-sm leading-relaxed text-[var(--color-text-muted)] md:text-base">{formatAchievementDescription(achievement.description)}</p>
-                                    <p class="face-anim anim-3 mt-5 text-center text-sm text-[var(--color-text-muted)]">Click to return</p>
+                                <div
+                                    class="flip-face flip-back achievement-back rounded-2xl border border-[var(--color-primary)]/35 p-6 md:p-7"
+                                    style={`--achievement-back-image: url('${achievement.image}')`}
+                                >
+                                    <div class="back-top-line face-anim anim-1"></div>
+                                    <h3 class="face-anim anim-1 back-title mb-4 text-center text-lg font-semibold md:text-xl">{achievement.title}</h3>
+                                    <p class="face-anim anim-2 flip-description break-words text-center text-sm leading-relaxed md:text-base">{formatAchievementDescription(achievement.description)}</p>
+                                    <p class="face-anim anim-3 back-cta mt-5 text-center text-sm">Click to return</p>
                                 </div>
                             </div>
                         </button>
@@ -255,6 +258,65 @@
         transform: rotateY(180deg);
     }
 
+    .achievement-back {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #f2f6ff;
+        background: linear-gradient(138deg, rgba(5, 8, 24, 0.92) 0%, rgba(8, 18, 46, 0.9) 52%, rgba(6, 16, 44, 0.95) 100%);
+        box-shadow: inset 0 0 0 1px rgba(127, 166, 255, 0.2), 0 20px 38px rgba(1, 6, 19, 0.4);
+    }
+
+    .achievement-back::before {
+        content: '';
+        position: absolute;
+        inset: -8%;
+        z-index: -2;
+        background-image: var(--achievement-back-image);
+        background-size: cover;
+        background-position: center;
+        opacity: 0.35;
+        transform: scale(1.08);
+        filter: saturate(1.4) contrast(1.1) brightness(0.45);
+    }
+
+    .achievement-back::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background:
+            radial-gradient(circle at 16% 84%, rgba(86, 149, 255, 0.34), transparent 42%),
+            radial-gradient(circle at 86% 14%, rgba(49, 126, 255, 0.28), transparent 38%),
+            linear-gradient(180deg, rgba(2, 8, 24, 0.3) 0%, rgba(4, 10, 28, 0.86) 100%);
+    }
+
+    .back-top-line {
+        margin-bottom: 1.2rem;
+        height: 0.2rem;
+        width: 100%;
+        border-radius: 9999px;
+        background: linear-gradient(90deg, rgba(255, 196, 71, 0.95) 0%, rgba(255, 223, 128, 0.85) 100%);
+    }
+
+    .back-title {
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #f4f7ff;
+        text-wrap: balance;
+    }
+
+    .flip-description {
+        color: rgba(232, 240, 255, 0.88);
+    }
+
+    .back-cta {
+        color: rgba(223, 234, 255, 0.82);
+    }
+
     .face-anim {
         opacity: 0;
         transform: translateY(10px) scale(0.99);
@@ -277,6 +339,26 @@
 
     .anim-3 {
         transition-delay: 0.1s;
+    }
+
+    .flip-card.is-flipped .flip-back .flip-description {
+        animation: description-reveal 0.58s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+    }
+
+    @keyframes description-reveal {
+        from {
+            opacity: 0;
+            transform: translateY(14px);
+            clip-path: inset(0 0 100% 0);
+            filter: blur(2px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+            clip-path: inset(0 0 0 0);
+            filter: blur(0);
+        }
     }
 
     .carousel-controls {
