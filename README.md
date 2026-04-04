@@ -27,7 +27,7 @@ My focus areas include:
 - Backend: Laravel 13, PHP 8.3+
 - Frontend: Svelte 5, Inertia.js
 - Build tools: Vite, Tailwind CSS 4
-- Database: SQLite (default local), MySQL supported
+- Database: MySQL (default local)
 - Animation/UI: GSAP, Bits UI, Lucide Svelte
 
 ## Features
