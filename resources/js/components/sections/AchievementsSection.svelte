@@ -38,6 +38,17 @@
         navDirection = 1;
         currentIndex = normalizeIndex(currentIndex + 1);
     }
+
+    function formatAchievementDescription(text) {
+        if (!text) return '';
+        if (/\s/.test(text)) return text;
+
+        const spaced = text
+            .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+            .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2');
+
+        return spaced.charAt(0).toUpperCase() + spaced.slice(1);
+    }
 </script>
 
 <section id="achievements" class="section-wrap">
@@ -77,7 +88,7 @@
                                 <div class="flip-face flip-back rounded-2xl border border-[var(--color-primary)]/35 bg-[var(--color-surface)] p-6 md:p-7">
                                     <div class="mb-5 h-1 w-full rounded-full bg-[var(--color-warm)]"></div>
                                     <h3 class="face-anim anim-1 mb-4 text-center text-lg font-semibold md:text-xl">{achievement.title}</h3>
-                                    <p class="face-anim anim-2 text-center text-sm leading-relaxed text-[var(--color-text-muted)] md:text-base">{achievement.description}</p>
+                                    <p class="face-anim anim-2 break-words text-center text-sm leading-relaxed text-[var(--color-text-muted)] md:text-base">{formatAchievementDescription(achievement.description)}</p>
                                     <p class="face-anim anim-3 mt-5 text-center text-sm text-[var(--color-text-muted)]">Click to return</p>
                                 </div>
                             </div>
