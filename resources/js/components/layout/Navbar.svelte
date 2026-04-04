@@ -55,23 +55,22 @@
     style="background: linear-gradient(180deg, rgba(11, 10, 18, 0.96) 0%, rgba(17, 13, 30, 0.92) 100%);"
     aria-label="Main navigation"
 >
-    <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
+    <div class="flex w-full items-center justify-between px-3 py-4 md:px-6">
         <a class="inline-flex items-center" href="/" aria-label="Go to Home section">
             <img src="/assets/images/logolems.png" alt="Lems logo" class="brand-logo h-11 w-auto object-contain" />
             <span class="mobile-brand-inline sm:hidden">LEMUEL ABELLANA</span>
             <span class="brand-name hidden sm:inline">LEMUEL ABELLANA</span>
         </a>
 
-        <div class="hidden items-center gap-8 md:flex">
-            {#each navLinks as item}
-                <button type="button" class="text-sm font-medium text-[var(--color-text)]/90 transition-colors hover:text-[var(--color-warm)]" onclick={() => navigateTo(item)} aria-label={`Go to ${item.label}`}>
-                    {item.label}
-                </button>
-            {/each}
-        </div>
-
-        <div class="flex items-center gap-3">
-            <a href="/resume.pdf" download class="hidden rounded-full border border-[var(--color-primary)] px-4 py-2 text-xs font-medium text-[var(--color-text)] transition hover:bg-[var(--color-primary)]/20 md:inline-flex">
+        <div class="ml-auto flex items-center gap-3 md:gap-8">
+            <div class="hidden items-center gap-8 md:flex">
+                {#each navLinks as item}
+                    <button type="button" class="text-base font-medium text-[var(--color-text)]/90 transition-colors hover:text-[var(--color-warm)]" onclick={() => navigateTo(item)} aria-label={`Go to ${item.label}`}>
+                        {item.label}
+                    </button>
+                {/each}
+            </div>
+            <a href="/download-cv" class="hidden rounded-full bg-[var(--color-warm)] px-5 py-2.5 text-sm font-semibold text-[#1a1200] transition hover:brightness-95 md:inline-flex">
                 Download CV
             </a>
             <button type="button" class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--color-primary)]/50 text-[var(--color-warm)] md:hidden" onclick={toggleMenu} aria-label="Toggle mobile navigation" aria-expanded={isOpen} aria-controls="mobile-menu">
@@ -95,11 +94,11 @@
         <div class="space-y-2 border-t border-[var(--color-primary)]/20 px-6 py-4">
             <div class="mobile-brand-name">LEMUEL ABELLANA</div>
             {#each navLinks as item}
-                <button type="button" class="block w-full rounded-lg px-3 py-2 text-left text-sm text-[var(--color-text)] transition-colors hover:bg-[var(--color-primary)]/10 hover:text-[var(--color-warm)]" onclick={() => navigateTo(item)} aria-label={`Go to ${item.label}`}>
+                <button type="button" class="block w-full rounded-lg px-3 py-2 text-left text-base text-[var(--color-text)] transition-colors hover:bg-[var(--color-primary)]/10 hover:text-[var(--color-warm)]" onclick={() => navigateTo(item)} aria-label={`Go to ${item.label}`}>
                     {item.label}
                 </button>
             {/each}
-            <a href="/resume.pdf" download class="inline-flex w-full justify-center rounded-lg border border-[var(--color-primary)] px-4 py-2 text-sm text-[var(--color-text)]">
+            <a href="/download-cv" class="inline-flex w-full justify-center rounded-lg bg-[var(--color-warm)] px-4 py-2.5 text-base font-semibold text-[#1a1200] transition hover:brightness-95">
                 Download CV
             </a>
         </div>

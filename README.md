@@ -36,7 +36,7 @@ My focus areas include:
 - Hero, About, Skills, Projects, Leadership, Achievements, Contact, and Resume sections
 - About carousel with auto-slide and manual controls
 - Contact form with server-side validation and persistence
-- Resume download support from public/resume.pdf
+- Resume download support from public/[ABELLANA]CurriculumVitae.pdf
 - Responsive layout for desktop, tablet, and mobile
 
 ## Quick Start
@@ -119,7 +119,7 @@ php artisan migrate
 ## Customization Tips
 
 - Update profile values in routes/web.php
-- Replace public/resume.pdf with your final CV
+- Replace public/[ABELLANA]CurriculumVitae.pdf with your final CV
 - Set real LinkedIn and GitHub URLs in profile props
 - Update project and achievements content in section components
 

@@ -27,11 +27,11 @@ Route::get('/', function () {
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::get('/download-cv', function () {
-    $cvPath = public_path('resume.pdf');
+    $cvPath = public_path('[ABELLANA]CurriculumVitae.pdf');
 
     abort_unless(file_exists($cvPath), 404);
 
-    return response()->download($cvPath, 'Lemuel_Abellana_CV.pdf');
+    return response()->download($cvPath, '[ABELLANA]CurriculumVitae.pdf');
 })->name('cv.download');
  
 Route::get('/projects', function () {
