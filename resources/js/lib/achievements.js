@@ -26,7 +26,7 @@ export const achievements = [
     },
     {
         title: 'National Academy of Science and Technology SCIENTEACH: Symposium for the Youth',
-        description: 'participatedInTheNationalAcademyOfScienceAndTechnologyScienteachSymposiumJoiningYouthFocusedScienceLearningSessionsAndKnowledgeExchange',
+        description: 'participatedInTheNationalAcademyOfScienceAndTechnologyScienteachSymposiumJoiningYouthFocusedScienceLearningSessions',
         image: '/assets/images/achievements/nast.jpg',
     },
     {
@@ -41,7 +41,7 @@ export const achievements = [
     },
     {
         title: 'Member - DOST Scholars Transforming Advancement and Research for Technology (DOST - START)',
-        description: 'contributedToInitiativesAndTechnicalLearningCirclesThatEncourageInnovationCollaborationAndResearchDrivenStudentLeadership',
+        description: 'contributedToInitiativesThatEncourageInnovationCollaborationAndResearchDrivenStudentLeadership',
         image: '/assets/images/achievements/start.jpg',
     },
     {

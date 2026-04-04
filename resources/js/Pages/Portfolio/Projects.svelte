@@ -51,34 +51,6 @@
         window.open(src, '_blank', 'noopener,noreferrer');
     };
 
-    const enforceProjectKeywordsUppercase = (text) => {
-        if (!text) return '';
-
-        return text
-            .replace(/\buic\b/gi, 'UIC')
-            .replace(/\bpwa\b/gi, 'PWA')
-            .replace(/\bitso\b/gi, 'ITSO')
-            .replace(/\brpic\b/gi, 'RPIC')
-            .replace(/\bdost\b/gi, 'DOST')
-            .replace(/\bai\b/gi, 'AI')
-            .replace(/\bnasa\b/gi, 'NASA')
-            .replace(/\bbook[\s-]*it[\s-]*now\b/gi, 'BOOK IT NOW');
-    };
-
-    const toCamelCaseText = (text) => {
-        if (!text) return '';
-
-        const camelCaseText = text
-            .split(/(\s+)/)
-            .map((chunk) => {
-                if (!chunk.trim()) return chunk;
-                return chunk.charAt(0).toUpperCase() + chunk.slice(1).toLowerCase();
-            })
-            .join('');
-
-        return enforceProjectKeywordsUppercase(camelCaseText);
-    };
-
     const filteredProjects = $derived(
         projects.filter((project) => {
             const matchesCategory = selectedCategory === 'All' || project.category === selectedCategory;
@@ -112,7 +84,7 @@
                 <p class="text-sm font-semibold uppercase tracking-[0.32em] text-[var(--color-muted)]">Portfolio</p>
                 <h1 class="mt-3 text-3xl font-bold text-[var(--color-warm)] md:text-4xl">All Projects</h1>
                 <p class="mt-3 max-w-2xl text-sm text-[var(--color-muted)] md:text-base">
-                    Browse all projects by category or search by keywords, technologies, roles, and outcomes.
+                    Browse All Projects by Category or Search by Keywords, Technologies, Roles, and Outcomes
                 </p>
             </div>
             <a href="/" class="rounded-full border border-[var(--color-border)] px-5 py-2 text-sm font-semibold text-[var(--color-text)] transition hover:border-[var(--color-warm)] hover:text-[var(--color-warm)]">
@@ -163,7 +135,7 @@
                         </div>
 
                         <h2 class="min-h-[5rem] text-center text-[clamp(1.25rem,1.5vw,1.85rem)] font-bold leading-tight text-[var(--color-warm)]">{project.name}</h2>
-                        <p class="min-h-[4.5rem] text-justify text-[clamp(0.85rem,0.95vw,1.1rem)] leading-snug text-[var(--color-muted)]">{toCamelCaseText(project.description)}</p>
+                        <p class="min-h-[4.5rem] text-justify text-[clamp(0.85rem,0.95vw,1.1rem)] leading-snug text-[var(--color-muted)]">{project.description}</p>
 
                         <div class="mt-2 mb-4 overflow-hidden rounded-xl border border-[var(--color-primary)]/40 bg-[var(--color-bg)]/70 aspect-[4/3]">
                             {#if getProjectImageSrc(project)}

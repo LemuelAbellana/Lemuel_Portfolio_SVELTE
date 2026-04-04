@@ -2,7 +2,7 @@ export const projects = [
     {
         name: 'IP Management System',
         image: 'itsoip.png',
-        description: 'A PWA built to streamline intellectual property protection application workflows for ITSO at UIC.',
+        description: 'A PWA Built to Streamline Intellectual Property Protection Application Workflows for ITSO at UIC.',
         tags: ['PWA', 'Laravel', 'Software Engineering'],
         role: 'Full-Stack Developer',
         features: ['IP application workflow', 'Status tracking', 'Document handling for submissions'],
@@ -13,7 +13,7 @@ export const projects = [
     {
         name: 'RPIC Research Management',
         image: 'rpic.jpg',
-        description: 'A PWA for research defense scheduling, document storage, and publication and seminar information management.',
+        description: 'A PWA for Research Defense Scheduling, Document Storage, and Publication and Seminar Information Management.',
         tags: ['PWA', 'MySQL', 'PAASCU Support'],
         role: 'Backend and Database Developer',
         features: ['Defense schedule management', 'Research document repository', 'Information access for seminars and publications'],
@@ -24,7 +24,7 @@ export const projects = [
     {
         name: 'UIC DOST Scholar Management System',
         image: 'dost.jpg',
-        description: 'A web-based system for managing UIC DOST scholar records, requirements, and status tracking workflows.',
+        description: 'A Web-Based System for Managing UIC DOST Scholar Records, Requirements, and Status Tracking Workflows.',
         tags: ['Laravel', 'MySQL', 'Scholarship Management'],
         role: 'Full-Stack Developer',
         features: ['Scholar profile management', 'Requirement and compliance tracking', 'Status monitoring dashboard'],
@@ -35,7 +35,7 @@ export const projects = [
     {
         name: 'Anime Dojo Game',
         image: null,
-        description: 'An interactive gaming PWA integrated with trained AI models to predict outcomes and provide user insights.',
+        description: 'An Interactive Gaming PWA Integrated with Trained AI Models to Predict Outcomes and Provide User Insights.',
         tags: ['AI', 'JavaScript', 'Node.js'],
         role: 'Game Systems Developer',
         features: ['AI-assisted prediction engine', 'Session-based scoring', 'Interactive gameplay loops'],
@@ -45,8 +45,8 @@ export const projects = [
     },
     {
         name: 'Guide to Loratadine (Allerta)',
-        image: null,
-        description: 'A mobile application that educates users about Loratadine mechanisms and effects in the body.',
+        image: 'alerta.jpg',
+        description: 'A Mobile Application That Educates Users About Loratadine Mechanisms and Effects in the Body.',
         tags: ['Mobile', 'Health Education', 'IT Elective'],
         role: 'Mobile App Developer',
         features: ['Drug mechanism overview', 'Educational mobile interface', 'Structured health information'],
@@ -57,7 +57,7 @@ export const projects = [
     {
         name: 'NeuroZen',
         image: 'neurozen.png',
-        description: 'A mobile prototype for stress management with a simulated marketplace for wellness products.',
+        description: 'A Mobile Prototype for Stress Management with a Simulated Marketplace for Wellness Products.',
         tags: ['Mobile', 'Prototype', 'Wellness'],
         role: 'Prototype Developer',
         features: ['Stress-management concept screens', 'Simulated product marketplace', 'Mobile-first user journey'],
@@ -68,7 +68,7 @@ export const projects = [
     {
         name: 'TUN-AN Landing Page',
         image: 'tun-an.jpg',
-        description: 'A corporate landing page for a Technopreneurship company with an integrated email inquiry workflow.',
+        description: 'A Corporate Landing Page for a Technopreneurship Company with an Integrated Email Inquiry Workflow.',
         tags: ['Landing Page', 'Email Integration', 'Technopreneurship'],
         role: 'Frontend and Integration Developer',
         features: ['Corporate brand layout', 'Email inquiry handling', 'Customer-service contact flow'],
@@ -79,7 +79,7 @@ export const projects = [
     {
         name: 'Clinic-Connect',
         image: 'clinicconnect.jpg',
-        description: 'A pediatric care appointment PWA for booking, consultations, and medication purchasing.',
+        description: 'A Pediatric Care Appointment PWA for Booking, Consultations, and Medication Purchasing.',
         tags: ['PWA', 'Healthcare', 'Appointments'],
         role: 'Full-Stack Developer',
         features: ['Appointment booking system', 'Consultation queue management', 'Medication catalog and ordering'],
@@ -90,7 +90,7 @@ export const projects = [
     {
         name: 'Ayo-ayo AI Green Computing',
         image: 'ayoayo.jpg',
-        description: 'An AI-integrated mobile app promoting e-waste mitigation through recycle, donate, and sell flows.',
+        description: 'An AI-Integrated Mobile App Promoting E-Waste Mitigation Through Recycle, Donate, and Sell Flows.',
         tags: ['AI', 'Mobile', 'Sustainability'],
         role: 'Mobile and API Integrator',
         features: ['Recycling and donation flows', 'Sell feature for reusable electronics', 'Knowledge-sharing prompts'],
@@ -101,7 +101,7 @@ export const projects = [
     {
         name: 'Public Health Research Forum Materials',
         image: 'public-health.jpg',
-        description: 'Designed publication materials for the University of the Immaculate Conception Public Health Research Forum 2024.',
+        description: 'Designed Publication Materials for the University of the Immaculate Conception Public Health Research Forum 2024.',
         tags: ['Publication Design', 'Academic Event', '2024'],
         role: 'Publication Designer',
         features: ['Visual communication assets', 'Event publication layout', 'Consistent branding support'],
@@ -112,7 +112,7 @@ export const projects = [
     {
         name: 'House Rental System',
         image: null,
-        description: 'A personal PWA for rental listing management and tenant tracking.',
+        description: 'A Personal PWA for Rental Listing Management and Tenant Tracking.',
         tags: ['PWA', 'Property Management', 'Personal Project'],
         role: 'Full-Stack Developer',
         features: ['Listing and tenant management', 'Rental status dashboard', 'Record maintenance module'],
@@ -123,7 +123,7 @@ export const projects = [
     {
         name: 'UIC Digital Christmas Tree',
         image: 'xmas.jpg',
-        description: 'A web application commemorating 2025 university events with interactive ornaments and 2026 resolution sharing.',
+        description: 'A Web Application Commemorating 2025 University Events with Interactive Ornaments and 2026 Resolution Sharing.',
         tags: ['Interactive Web App', 'Community', 'Personal Project'],
         role: 'Frontend Developer',
         features: ['Interactive ornament placement', 'Resolution sharing flow', 'Event-themed visual design'],
@@ -134,7 +134,7 @@ export const projects = [
     {
         name: 'UIC Valentine Wall',
         image: 'valentine.jpg',
-        description: 'An interactive wall web app where users can post and view digital valentine messages for the UIC community.',
+        description: 'An Interactive Wall Web App Where Users Can Post and View Digital Valentine Messages for the UIC Community.',
         tags: ['Interactive Web App', 'Community', 'Event Project'],
         role: 'Frontend Developer',
         features: ['Message posting flow', 'Community message wall', 'Event-themed interaction design'],
@@ -145,7 +145,7 @@ export const projects = [
     {
         name: 'Personal Portfolio Website',
         image: 'portfolio.jpg',
-        description: 'A personal web application presenting professional background, projects, affiliations, and services.',
+        description: 'A Personal Web Application Presenting Professional Background, Projects, Affiliations, and Services.',
         tags: ['Portfolio', 'Svelte', 'Laravel'],
         role: 'Designer and Developer',
         features: ['Project showcase', 'Leadership and achievements timeline', 'Contact and resume sections'],
@@ -156,7 +156,7 @@ export const projects = [
     {
         name: 'NASA Data Weather Forecast App',
         image: 'nasaapp.png',
-        description: 'An AI-integrated mobile app using NASA data to provide weather safety insights for hikers and adventurers.',
+        description: 'An AI-Integrated Mobile App Using NASA Data to Provide Weather Safety Insights for Hikers and Adventurers.',
         tags: ['AI', 'NASA Data', 'Mobile'],
         role: 'Mobile and AI Integrator',
         features: ['Weather safety insights', 'Adventure-oriented risk prompts', 'Data-driven mobile recommendations'],
@@ -168,7 +168,7 @@ export const projects = [
         name: 'Book-It-Now',
         image: 'book-it-now.png',
         description:
-            'Book-It-Now is a booking system designed specifically for the ICTDU (Information and Communications Technology Development Unit) at the University of the Immaculate Conception (UIC). It streamlines the process for officers and the secretary, making it easier to access, manage, and coordinate the utilization of ICTDU resources efficiently.',
+            'Book-It-Now is a Booking System Designed Specifically for the ICTDU (Information and Communications Technology Development Unit) at the University of the Immaculate Conception (UIC). It Streamlines the Process for Officers and the Secretary, Making it Easier to Access, Manage, and Coordinate the Utilization of ICTDU Resources Efficiently.',
         tags: ['Java', 'MySQL', 'Booking System', 'ICTDU Support'],
         role: 'Backend and Database Developer',
         features: ['Resource booking workflow', 'Officer and secretary coordination tools', 'Scheduling and utilization management'],

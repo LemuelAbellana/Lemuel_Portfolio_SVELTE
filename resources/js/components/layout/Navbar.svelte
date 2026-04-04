@@ -57,7 +57,8 @@
 >
     <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
         <a class="inline-flex items-center" href="/" aria-label="Go to Home section">
-            <img src="/assets/images/logolems.png" alt="Lems logo" class="h-11 w-auto object-contain" />
+            <img src="/assets/images/logolems.png" alt="Lems logo" class="brand-logo h-11 w-auto object-contain" />
+            <span class="mobile-brand-inline sm:hidden">LEMUEL ABELLANA</span>
             <span class="brand-name hidden sm:inline">LEMUEL ABELLANA</span>
         </a>
 
@@ -92,6 +93,7 @@
 
     <div id="mobile-menu" bind:this={mobileMenu} class="overflow-hidden md:hidden" style="height: 0; opacity: 0;">
         <div class="space-y-2 border-t border-[var(--color-primary)]/20 px-6 py-4">
+            <div class="mobile-brand-name">LEMUEL ABELLANA</div>
             {#each navLinks as item}
                 <button type="button" class="block w-full rounded-lg px-3 py-2 text-left text-sm text-[var(--color-text)] transition-colors hover:bg-[var(--color-primary)]/10 hover:text-[var(--color-warm)]" onclick={() => navigateTo(item)} aria-label={`Go to ${item.label}`}>
                     {item.label}
@@ -115,5 +117,46 @@
         letter-spacing: 0.02em;
         color: var(--color-warm);
         text-shadow: 0 0 18px rgba(253, 185, 39, 0.22);
+    }
+
+    .mobile-brand-name {
+        padding: 0 0.75rem 0.25rem;
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: 0.02em;
+        color: var(--color-warm);
+        text-shadow: 0 0 18px rgba(253, 185, 39, 0.22);
+    }
+
+    .mobile-brand-inline {
+        margin-left: 0.55rem;
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: clamp(0.84rem, 3.9vw, 1rem);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0.02em;
+        color: var(--color-warm);
+        text-shadow: 0 0 18px rgba(253, 185, 39, 0.22);
+        white-space: nowrap;
+    }
+
+    @media (max-width: 420px) {
+        nav > div {
+            padding-left: 0.9rem;
+            padding-right: 0.9rem;
+        }
+
+        .brand-logo {
+            height: 2.1rem;
+        }
+
+        .mobile-brand-inline {
+            margin-left: 0.45rem;
+            letter-spacing: 0.015em;
+        }
     }
 </style>

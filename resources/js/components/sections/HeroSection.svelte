@@ -26,7 +26,6 @@
         '"Commit to the Lord whatever you do, and he will establish your plans." - Proverbs 16:3',
         '"When the time is right, I, the LORD, will make it happen." - Isaiah 60:22',
         '"I can do all things through Christ who strengthens me" - Philippians 4:13',
-        '"Have I not commanded you? Be strong and courageous. Do not be afraid; do not be discouraged, for the LORD your God will be with you wherever you go." - Joshua 1:9',
     ];
 
     const letterIcons = ['<>', '{}', '::', '[]', '/*', '*/'];
@@ -426,18 +425,33 @@
         }
 
         .megaphone-wrap {
-            top: -5.6rem;
-            left: 50%;
-            transform: translateX(-50%);
-            justify-content: center;
-            gap: 0.45rem;
-            width: min(92vw, 22rem);
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
+            margin: 0 auto 0.9rem;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 0.4rem;
+            width: min(94vw, 24rem);
+        }
+
+        .megaphone-trigger {
+            flex-shrink: 0;
+        }
+
+        .megaphone-emoji {
+            font-size: 1.55rem;
         }
 
         .megaphone-message {
-            width: min(72vw, 14rem);
-            font-size: 0.7rem;
-            line-height: 1.3;
+            width: 100%;
+            max-width: none;
+            min-width: 0;
+            font-size: clamp(0.76rem, 2.65vw, 0.9rem);
+            line-height: 1.35;
+            overflow-wrap: anywhere;
+            word-break: break-word;
             opacity: 1;
             visibility: visible;
             transform: translateX(0);
@@ -446,6 +460,18 @@
 
         .name-tilt {
             padding-top: 2.4rem;
+        }
+    }
+
+    @media (max-width: 420px) {
+        .megaphone-wrap {
+            gap: 0.3rem;
+            width: min(92vw, 21rem);
+        }
+
+        .megaphone-message {
+            font-size: 0.78rem;
+            line-height: 1.3;
         }
     }
 </style>

@@ -24,6 +24,23 @@
         { name: 'NodeJS', logo: 'https://skillicons.dev/icons?i=nodejs' },
         { name: 'MongoDB', logo: 'https://skillicons.dev/icons?i=mongodb' },
     ];
+
+    const technicalSkills = [
+        { name: 'System Analysis and Design', value: 75 },
+        { name: 'Web Development', value: 80 },
+        { name: 'Database Management', value: 80 },
+        { name: 'Mobile Development', value: 50 },
+        { name: 'Cybersecurity', value: 50 },
+    ];
+
+    const softSkills = [
+        { name: 'Communication', value: 90 },
+        { name: 'Leadership', value: 90 },
+        { name: 'Problem Solving', value: 85 },
+        { name: 'Teamwork', value: 85 },
+        { name: 'Adaptability', value: 85 },
+    ];
+
     const duplicatedCarouselItems = [...carouselItems, ...carouselItems];
 
     const applyCinemaCurve = () => {
@@ -136,7 +153,7 @@
     <div class="relative z-10 w-full px-6">
         <div class="skills-header">
             <h2 class="skills-title">SKILLS</h2>
-            <p class="skills-subtitle">A practical full-stack skillset shaped by projects, leadership work, and continuous technical training.</p>
+            <p class="skills-subtitle">A Practical Full-Stack Skillset Shaped by Projects, Leadership Work, and Continuous Technical Training.</p>
         </div>
     </div>
 
@@ -157,6 +174,44 @@
                 {/each}
             </div>
         </div>
+    </div>
+
+    <div class="skills-progress-wrap relative z-10">
+        <div class="skills-progress-grid">
+            <article class="skills-progress-card" aria-label="Technical skills">
+                <h3>Technical Skills</h3>
+                {#each technicalSkills as skill}
+                    <div class="skill-progress-row">
+                        <div class="skill-progress-head">
+                            <span>{skill.name}</span>
+                            <strong>{skill.value}%</strong>
+                        </div>
+                        <div class="skill-progress-track" aria-hidden="true">
+                            <span class="skill-progress-fill" style={`width: ${skill.value}%`}></span>
+                        </div>
+                    </div>
+                {/each}
+            </article>
+
+            <article class="skills-progress-card" aria-label="Soft skills">
+                <h3>Soft Skills</h3>
+                {#each softSkills as skill}
+                    <div class="skill-progress-row">
+                        <div class="skill-progress-head">
+                            <span>{skill.name}</span>
+                            <strong>{skill.value}%</strong>
+                        </div>
+                        <div class="skill-progress-track" aria-hidden="true">
+                            <span class="skill-progress-fill" style={`width: ${skill.value}%`}></span>
+                        </div>
+                    </div>
+                {/each}
+            </article>
+        </div>
+
+        <p class="skills-progress-note">
+            These Ratings Guide Me in Identifying Opportunities for Improvement while Fostering a Mindset of Continuous Learning and Ongoing Professional Development.
+        </p>
     </div>
 </section>
 
@@ -276,6 +331,82 @@
         line-height: 1.12;
     }
 
+    .skills-progress-wrap {
+        max-width: 1200px;
+        margin: 2.4rem auto 0;
+        padding: 0 1rem;
+    }
+
+    .skills-progress-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.1rem;
+    }
+
+    .skills-progress-card {
+        border-radius: 1rem;
+        border: 1px solid color-mix(in srgb, var(--color-primary) 48%, transparent 52%);
+        background:
+            radial-gradient(circle at 14% 12%, rgba(130, 87, 229, 0.2), transparent 46%),
+            linear-gradient(180deg, rgba(12, 10, 28, 0.95), rgba(10, 9, 22, 0.86));
+        padding: 1.25rem;
+        box-shadow: inset 0 0 16px rgba(85, 37, 131, 0.18), 0 10px 26px rgba(0, 0, 0, 0.35);
+    }
+
+    .skills-progress-card h3 {
+        margin: 0 0 1rem;
+        font-family: 'DM Sans', sans-serif;
+        font-size: clamp(1.15rem, 2.1vw, 1.55rem);
+        letter-spacing: 0.01em;
+        color: var(--color-warm);
+        text-shadow: 0 0 18px rgba(253, 185, 39, 0.18);
+    }
+
+    .skill-progress-row + .skill-progress-row {
+        margin-top: 0.86rem;
+    }
+
+    .skill-progress-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.9rem;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.99rem;
+        color: color-mix(in srgb, var(--color-text) 92%, var(--color-muted) 8%);
+        margin-bottom: 0.44rem;
+    }
+
+    .skill-progress-head strong {
+        color: #c7a9ff;
+        font-size: 0.95rem;
+        font-weight: 700;
+    }
+
+    .skill-progress-track {
+        position: relative;
+        height: 0.5rem;
+        border-radius: 999px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .skill-progress-fill {
+        display: block;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #7e3af2 0%, #9f67ff 55%, #c6a8ff 100%);
+        box-shadow: 0 0 16px rgba(159, 103, 255, 0.52);
+    }
+
+    .skills-progress-note {
+        margin: 1.2rem auto 0;
+        max-width: 72ch;
+        text-align: center;
+        font-family: 'DM Sans', sans-serif;
+        font-size: clamp(0.95rem, 1.45vw, 1.08rem);
+        color: color-mix(in srgb, var(--color-muted) 74%, #d7c2ff 26%);
+    }
+
     @media (max-width: 768px) {
         .skills-cinema::before,
         .skills-cinema::after {
@@ -299,6 +430,33 @@
         .skill-logo {
             width: 2.5rem;
             height: 2.5rem;
+        }
+
+        .skills-progress-wrap {
+            margin-top: 1.6rem;
+            padding: 0 0.3rem;
+        }
+
+        .skills-progress-grid {
+            grid-template-columns: 1fr;
+            gap: 0.85rem;
+        }
+
+        .skills-progress-card {
+            padding: 1rem;
+        }
+
+        .skill-progress-head {
+            font-size: 0.93rem;
+        }
+
+        .skill-progress-track {
+            height: 0.48rem;
+        }
+
+        .skills-progress-note {
+            margin-top: 1rem;
+            font-size: 0.92rem;
         }
     }
 </style>

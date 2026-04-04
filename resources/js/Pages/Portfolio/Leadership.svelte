@@ -68,7 +68,7 @@
 <div class="min-h-screen text-[var(--color-text)]">
     <Navbar links={navLinks} />
 
-    <main class="relative overflow-hidden pt-24 md:pt-28">
+    <main class="relative overflow-x-hidden pt-24 md:pt-28">
         <div class="section-grid-zoom" aria-hidden="true"></div>
 
         {#each entries as entry}
@@ -210,6 +210,27 @@
         width: 100%;
         height: auto;
         display: block;
+    }
+
+    @media (max-width: 768px) {
+        .details-left,
+        .details-right {
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .short-mark {
+            width: auto;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            font-size: clamp(3.1rem, 15vw, 4.8rem);
+        }
+
+        .point-list {
+            line-height: 1.45;
+        }
     }
 
     @media (max-width: 900px) {

@@ -36,7 +36,7 @@
             label: 'Background',
             lead: 'Profile Overview',
             content:
-                'I am a Bachelor of Science in Information Technology student at the University of the Immaculate Conception, based in Davao City. My work combines full-stack development, progressive web applications, and AI-assisted systems with leadership experience from GDG on Campus, UIC-VIBE Club, and NSTP-CWTS community initiatives.',
+                'I am a Bachelor of Science in Information Technology student at the University of the Immaculate Conception, based in Davao City. My academic journey is centered on developing strong technical foundations while applying my knowledge to real-world projects that address practical needs in education, research, and community development. I am passionate about building solutions that are reliable, user-centered, and impactful, using technology as a tool to create meaningful change.\n\nMy work combines full-stack development, progressive web applications, and AI-assisted systems, allowing me to design and implement modern, scalable, and efficient digital solutions. Alongside my technical growth, I actively cultivate leadership and collaboration skills through my involvement in organizations such as GDG on Campus, the UIC-VIBE Club, and NSTP-CWTS community initiatives. These experiences have strengthened my ability to work with diverse teams, manage responsibilities, and contribute to projects that serve both academic and community-driven goals.\n\nThrough continuous learning, hands-on development, and community engagement, I strive to grow into a well-rounded IT professional who can contribute to innovative systems and support the advancement of technology within local and national communities.',
         },
         {
             label: 'Education',
@@ -48,14 +48,18 @@
         {
             label: 'Mission & Vision',
             lead: 'Direction',
-            content:
-                'My mission is to build reliable and user-focused digital solutions that support education, health, research, and community initiatives. My vision is to grow into a professional software engineer who contributes to scalable systems and responsible AI applications in the Philippines.',
+            mission:
+                'My mission is to build reliable, secure, and user-focused digital solutions that support education, health, research, and community initiatives. I strive to develop systems that are practical, accessible, and meaningful, ensuring that technology creates real value for individuals and organizations. Through continuous learning, collaboration, and responsible development practices, I aim to contribute to solutions that improve efficiency, promote knowledge, and empower communities.',
+            vision:
+                'My vision is to grow into a highly competent and ethical software engineer who contributes to scalable systems and responsible AI applications in the Philippines. I aspire to be part of initiatives that drive innovation, strengthen digital transformation, and support the development of technology that benefits society. Ultimately, I seek to make a lasting impact by building solutions that are not only technically sound but also socially responsible and sustainable for future generations.',
         },
         {
             label: 'Goals',
             lead: 'Roadmap',
-            content:
-                'My short-term goals are to complete my degree, continue producing high-quality portfolio projects, and secure an internship or junior developer role. My long-term goals are to deliver impactful products, strengthen leadership in tech communities, and mentor aspiring developers.',
+            shortTermGoal:
+                'My short-term goals are to successfully complete my degree, continue producing high-quality portfolio projects that demonstrate my technical and problem-solving abilities, and secure an internship or junior developer role where I can gain practical industry experience. I aim to strengthen my foundation in software development, collaborate effectively with teams, and continuously refine my skills through hands-on projects, technical training, and real-world application of modern technologies.',
+            longTermGoal:
+                'My long-term goals are to deliver impactful and scalable products that address real-world challenges, strengthen my leadership within technology communities, and contribute to initiatives that promote innovation and knowledge sharing. I aspire to mentor aspiring developers, support the growth of future technology professionals, and play an active role in building solutions that create meaningful value for organizations and communities. Ultimately, I seek to establish myself as a competent and responsible IT professional who continuously learns, leads, and contributes to the advancement of the technology sector.',
         },
         {
             label: 'Motivation',
@@ -129,7 +133,7 @@
             </p>
             <h2 class="mt-4 text-3xl font-bold tracking-tight text-[var(--color-text)] md:text-5xl">PERSONAL AND PROFESSIONAL SNAPSHOT</h2>
             <p class="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[var(--color-muted)] md:text-base">
-                Explore my background, education, goals, and motivation through a guided profile carousel.
+                Explore My Background, Education, Goals, and Motivation through a Guided Profile Carousel
             </p>
         </div>
 
@@ -157,7 +161,40 @@
                                 <div class="min-h-[160px] md:min-h-[230px]" in:fade={{ duration: 260 }} out:fade={{ duration: 180 }}>
                                     <p class="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-muted)]">{activeSlide.lead}</p>
                                     <h3 class="mt-3 text-3xl font-extrabold text-[var(--color-warm)] md:text-5xl">{activeSlide.label}</h3>
-                                    <p class="mt-4 max-w-2xl text-base leading-relaxed text-[var(--color-muted)]">{activeSlide.content}</p>
+
+                                    {#if activeSlide.mission || activeSlide.vision || activeSlide.shortTermGoal || activeSlide.longTermGoal}
+                                        {#if activeSlide.mission}
+                                            <div class="mt-4">
+                                                <p class="text-sm font-bold text-[var(--color-warm)]">Mission</p>
+                                                <p class="mt-1 max-w-2xl text-justify text-base leading-relaxed text-[var(--color-muted)]">{activeSlide.mission}</p>
+                                            </div>
+                                        {/if}
+
+                                        {#if activeSlide.vision}
+                                            <div class="mt-4">
+                                                <p class="text-sm font-bold text-[var(--color-warm)]">Vision</p>
+                                                <p class="mt-1 max-w-2xl text-justify text-base leading-relaxed text-[var(--color-muted)]">{activeSlide.vision}</p>
+                                            </div>
+                                        {/if}
+
+                                        {#if activeSlide.shortTermGoal}
+                                            <div class="mt-4">
+                                                <p class="text-sm font-bold text-[var(--color-warm)]">Short-Term Goal</p>
+                                                <p class="mt-1 max-w-2xl text-justify text-base leading-relaxed text-[var(--color-muted)]">{activeSlide.shortTermGoal}</p>
+                                            </div>
+                                        {/if}
+
+                                        {#if activeSlide.longTermGoal}
+                                            <div class="mt-4">
+                                                <p class="text-sm font-bold text-[var(--color-warm)]">Long-Term Goal</p>
+                                                <p class="mt-1 max-w-2xl text-justify text-base leading-relaxed text-[var(--color-muted)]">{activeSlide.longTermGoal}</p>
+                                            </div>
+                                        {/if}
+                                    {:else}
+                                        <p class="mt-4 max-w-2xl whitespace-pre-line text-justify text-base leading-relaxed text-[var(--color-muted)]">
+                                            {activeSlide.content}
+                                        </p>
+                                    {/if}
 
                                     {#if activeSlide.list}
                                         <div class="mt-6">

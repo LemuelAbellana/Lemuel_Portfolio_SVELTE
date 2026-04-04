@@ -29,9 +29,9 @@
         <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
             <div>
                 <p class="text-sm font-semibold uppercase tracking-[0.32em] text-[var(--color-muted)]">Portfolio</p>
-                <h1 class="mt-3 text-3xl font-bold text-[var(--color-warm)] md:text-4xl">Achievements Gallery</h1>
+                <h1 class="mt-3 text-3xl font-bold text-[var(--color-warm)] md:text-4xl">ACHIEVEMENTS GALLERY</h1>
                 <p class="mt-3 max-w-3xl text-sm text-[var(--color-muted)] md:text-base">
-                    A visual collection of scholarships, competitions, trainings, organizations, and leadership milestones.
+                    A Visual Collection of Scholarships, Competitions, Trainings, Organizations, and Leadership Milestones
                 </p>
             </div>
             <a href="/#achievements" class="rounded-full border border-[var(--color-border)] px-5 py-2 text-sm font-semibold text-[var(--color-text)] transition hover:border-[var(--color-warm)] hover:text-[var(--color-warm)]">

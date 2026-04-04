@@ -10,10 +10,10 @@
             position: 'left',
             useAvatar: true,
             points: [
-                'Co-led planning and execution of seminars and workshops with the club lead.',
-                'Prepared activity plans, budget requests, and liquidation documentation.',
-                'Conducted GDGOC-UIC InfoSession for membership and program orientation.',
-                'Collaborated with partner communities including DICE, USEP-DSC, UP SPARCS, and SPACE Davao.',
+                'Co-lead Planning and Execution of Seminars and Workshops with the Club Lead.',
+                'Prepared Activity Plans, Budget Requests, and Liquidation Documentation.',
+                'Conducted GDGOC-UIC InfoSession for Membership and Program Orientation.',
+                'Collaborated with partner communities including DICE to Expand Learning',
             ],
         },
         {
@@ -24,9 +24,9 @@
             position: 'right',
             useAvatar: false,
             points: [
-                'Facilitated student development seminars and engagement activities.',
-                'Led planning and coordination for News/Feature Writing and Filmmaking/Video Production sessions.',
-                'Helped strengthen creative and communication skills in the student community.',
+                'Facilitated Student Development Seminars and Engagement Activities.',
+                'Led Planning and Coordination for News/Feature Writing and Filmmaking/Video Production Sessions.',
+                'Helped Strengthen Creative and Communication Skills in the Student Community.',
             ],
         },
         {
@@ -37,11 +37,11 @@
             position: 'left',
             useAvatar: false,
             points: [
-                'Designed and facilitated DIGISKWELA digital literacy and game development workshops for 54 Grade 6 students.',
-                'Coordinated responsible digital citizenship seminars for student and community participants.',
-                'Spearheaded extension projects with CCS and partner student organizations for outreach and school support.',
-                'Led facilitator teams in planning schedules, safety procedures, and teaching materials.',
-                'Collected participant and teacher feedback to improve future civic engagement programs.',
+                'Designed and Facilitated DIGISKWELA Digital Literacy and Game Development Workshops for 54 Grade 6 students.',
+                'Coordinated Responsible Digital Citizenship Seminars for Student and Community Participants.',
+                'Spearheaded Extension Projects with CCS and Partner Student Organizations for Outreach and School Support.',
+                'Led Facilitator Teams in Planning Schedules, Safety Procedures, and Teaching Materials.',
+                'Collected Participant and Teacher Feedback to Improve Future Civic Engagement Programs.',
             ],
         },
     ];

@@ -29,7 +29,7 @@
     <div class="section-grid-zoom" aria-hidden="true"></div>
 
     <div class="relative z-10 mx-auto w-full max-w-6xl px-6">
-        <SectionTitle number="03" title="Featured Projects" subtitle="A focused selection of three projects. Visit the projects page to explore the full portfolio." useSans={true} showNumber={false} />
+        <SectionTitle number="03" title="Featured Projects" subtitle="A Focused Selection of Three Projects. Visit the Projects Page to Explore the Full Portfolio." useSans={true} showNumber={false} />
 
         <div class="grid grid-cols-1 items-stretch gap-5 md:grid-cols-2 xl:grid-cols-3">
             {#each featuredProjects as project, i}
