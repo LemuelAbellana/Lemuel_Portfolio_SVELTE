@@ -91,7 +91,7 @@ Use the Docker files committed in this repository:
 - `docker/nginx/default.conf`
 - `.env.stack.example`
 
-Copy the repo to the server, then create the real MySQL secrets file from example:
+After cloning the repository in Step 6, create the real MySQL secrets file from example:
 
 ```bash
 cd /home/cloudpanel/htdocs/portfolio.lemuel-abellana.dev
@@ -229,6 +229,7 @@ cd /home/cloudpanel/htdocs/portfolio.lemuel-abellana.dev
 Create production env:
 
 ```bash
+if [ ! -f .env ]; then cp .env.example .env; fi
 cp .env .env.production
 ```
 
