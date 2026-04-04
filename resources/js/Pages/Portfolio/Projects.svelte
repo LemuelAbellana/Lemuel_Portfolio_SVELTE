@@ -50,7 +50,7 @@
     <title>All Projects | Lemuel Opeña</title>
 </svelte:head>
 
-<main class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)]">
+<main class="min-h-screen text-[var(--color-text)]">
     <section class="mx-auto w-full max-w-7xl px-4 pb-20 pt-16 md:px-6 md:pt-20">
         <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
             <div>
@@ -107,7 +107,7 @@
                             <span class="rounded-full border border-[var(--color-border)] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--color-muted)]">{project.category}</span>
                         </div>
 
-                        <h2 class="min-h-[5rem] text-[clamp(1.25rem,1.5vw,1.85rem)] font-bold leading-tight text-[var(--color-text)]">{project.name}</h2>
+                        <h2 class="min-h-[5rem] text-center text-[clamp(1.25rem,1.5vw,1.85rem)] font-bold leading-tight text-[var(--color-warm)]">{project.name}</h2>
                         <p class="min-h-[4.5rem] text-[clamp(0.85rem,0.95vw,1.1rem)] leading-snug text-[var(--color-muted)]">{project.description}</p>
 
                         <div class="mt-2 mb-4 overflow-hidden rounded-xl border border-[var(--color-primary)]/40 bg-[var(--color-bg)]/70 aspect-[16/10]">

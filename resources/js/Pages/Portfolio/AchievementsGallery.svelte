@@ -24,7 +24,7 @@
     <title>Achievements Gallery | Lemuel Opeña</title>
 </svelte:head>
 
-<main class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)]">
+<main class="min-h-screen text-[var(--color-text)]">
     <section class="mx-auto w-full max-w-7xl px-6 pb-20 pt-16 md:pt-20">
         <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
             <div>
