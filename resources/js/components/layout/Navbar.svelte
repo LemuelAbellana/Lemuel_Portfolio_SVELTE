@@ -16,6 +16,18 @@
         isOpen = false;
     };
 
+    const navigateTo = (item) => {
+        if (item?.href) {
+            window.location.href = item.href;
+            isOpen = false;
+            return;
+        }
+
+        if (item?.id) {
+            scrollToSection(item.id);
+        }
+    };
+
     const toggleMenu = () => {
         isOpen = !isOpen;
     };
@@ -45,14 +57,14 @@
     aria-label="Main navigation"
 >
     <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
-        <button type="button" class="inline-flex items-center" onclick={() => scrollToSection('home')} aria-label="Go to Home section">
+        <a class="inline-flex items-center" href="/" aria-label="Go to Home section">
             <img src="/assets/images/logolems.png" alt="Lems logo" class="h-11 w-auto object-contain" />
             <span class="brand-name hidden sm:inline">LEMUEL ABELLANA</span>
-        </button>
+        </a>
 
         <div class="hidden items-center gap-8 md:flex">
             {#each navLinks as item}
-                <button type="button" class="text-sm font-medium text-[var(--color-text)]/90 transition-colors hover:text-[var(--color-warm)]" onclick={() => scrollToSection(item.id)} aria-label={`Go to ${item.label} section`}>
+                <button type="button" class="text-sm font-medium text-[var(--color-text)]/90 transition-colors hover:text-[var(--color-warm)]" onclick={() => navigateTo(item)} aria-label={`Go to ${item.label}`}>
                     {item.label}
                 </button>
             {/each}
@@ -75,7 +87,7 @@
     <div id="mobile-menu" bind:this={mobileMenu} class="overflow-hidden md:hidden" style="height: 0; opacity: 0;">
         <div class="space-y-2 border-t border-[var(--color-primary)]/20 px-6 py-4">
             {#each navLinks as item}
-                <button type="button" class="block w-full rounded-lg px-3 py-2 text-left text-sm text-[var(--color-text)] transition-colors hover:bg-[var(--color-primary)]/10 hover:text-[var(--color-warm)]" onclick={() => scrollToSection(item.id)} aria-label={`Go to ${item.label} section`}>
+                <button type="button" class="block w-full rounded-lg px-3 py-2 text-left text-sm text-[var(--color-text)] transition-colors hover:bg-[var(--color-primary)]/10 hover:text-[var(--color-warm)]" onclick={() => navigateTo(item)} aria-label={`Go to ${item.label}`}>
                     {item.label}
                 </button>
             {/each}

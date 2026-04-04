@@ -54,6 +54,26 @@ Route::get('/projects', function () {
     ]);
 })->name('projects');
 
+Route::get('/leadership', function () {
+    return Inertia::render('Portfolio/Leadership', [
+        'profile' => [
+            'name' => 'Lemuel G. Abellana',
+            'title' => 'BSIT Student | Full-Stack Developer',
+            'tagline' => 'Building practical web and mobile systems with AI integration for education and community impact.',
+            'email' => 'lemuelabellana84@gmail.com',
+            'phone' => '09512575802',
+            'location' => 'Molave Street, Barangay Santo Nino, Tugbok District, Davao City',
+            'linkedin' => 'https://www.linkedin.com',
+            'github' => 'https://github.com',
+            'twitter' => 'https://x.com',
+            'instagram' => 'https://www.instagram.com',
+            'whatsapp' => 'https://wa.me/639512575802',
+            'facebook' => 'https://www.facebook.com',
+            'photo' => null,
+        ],
+    ]);
+})->name('leadership');
+
 Route::get('/achievements-gallery', function () {
     return Inertia::render('Portfolio/AchievementsGallery');
 })->name('achievements.gallery');

@@ -6,7 +6,6 @@
     import AboutSection from '../../components/sections/AboutSection.svelte';
     import SkillsSection from '../../components/sections/SkillsSection.svelte';
     import ProjectsSection from '../../components/sections/ProjectsSection.svelte';
-    import LeadershipSection from '../../components/sections/LeadershipSection.svelte';
     import AchievementsSection from '../../components/sections/AchievementsSection.svelte';
 
     let { profile } = $props();
@@ -16,7 +15,7 @@
         { id: 'about', label: 'About' },
         { id: 'skills', label: 'Skills' },
         { id: 'projects', label: 'Projects' },
-        { id: 'leadership', label: 'Leadership' },
+        { href: '/leadership', label: 'Leadership' },
         { id: 'achievements', label: 'Achievements' },
     ]);
 
@@ -37,7 +36,6 @@
     <AboutSection />
     <SkillsSection />
     <ProjectsSection />
-    <LeadershipSection />
     <AchievementsSection />
     <Footer links={navLinks} {profile} />
 </div>
