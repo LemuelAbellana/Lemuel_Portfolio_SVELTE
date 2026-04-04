@@ -1,13 +1,23 @@
 <script>
-    import { cubicInOut } from 'svelte/easing';
-    import { fly } from 'svelte/transition';
+    import { onDestroy } from 'svelte';
     import { achievements } from '../../lib/achievements';
 
     let flippedCards = $state({});
     let currentIndex = $state(0);
     let navDirection = $state(1);
+    let isMobileView = $state(false);
+    let isSliding = $state(false);
+    let slideLockTimer = $state(null);
 
     const NAV_DURATION = 380;
+
+    if (typeof window !== 'undefined') {
+        isMobileView = window.innerWidth <= 768;
+    }
+
+    onDestroy(() => {
+        if (slideLockTimer) clearTimeout(slideLockTimer);
+    });
 
     function handleFlip(index) {
         flippedCards[index] = !flippedCards[index];
@@ -30,13 +40,27 @@
     }
 
     function previousAchievement() {
+        if (isSliding) return;
+        isSliding = true;
         navDirection = -1;
         currentIndex = normalizeIndex(currentIndex - 1);
+
+        if (slideLockTimer) clearTimeout(slideLockTimer);
+        slideLockTimer = setTimeout(() => {
+            isSliding = false;
+        }, (isMobileView ? 260 : NAV_DURATION) + 60);
     }
 
     function nextAchievement() {
+        if (isSliding) return;
+        isSliding = true;
         navDirection = 1;
         currentIndex = normalizeIndex(currentIndex + 1);
+
+        if (slideLockTimer) clearTimeout(slideLockTimer);
+        slideLockTimer = setTimeout(() => {
+            isSliding = false;
+        }, (isMobileView ? 260 : NAV_DURATION) + 60);
     }
 
     function formatAchievementDescription(text) {
@@ -67,17 +91,17 @@
                 {@const slotClass = offset === 0 ? 'slot-center' : offset < 0 ? 'slot-left' : 'slot-right'}
 
                 <div class={`carousel-slot ${slotClass}`}>
-                    {#key `${slotClass}-${index}-${currentIndex}`}
+                    {#key `${slotClass}-${index}`}
                         <button
                             type="button"
                             class="flip-card cursor-pointer"
+                            class:slide-from-right={navDirection === 1}
+                            class:slide-from-left={navDirection === -1}
                             class:is-flipped={flippedCards[index] ?? false}
                             aria-pressed={flippedCards[index] ?? false}
                             aria-label={`Flip achievement card: ${achievement.title}`}
                             onclick={() => handleFlip(index)}
                             onkeydown={(event) => handleKeydown(event, index)}
-                            in:fly={{ x: navDirection * 44, duration: NAV_DURATION, easing: cubicInOut }}
-                            out:fly={{ x: navDirection * -44, duration: NAV_DURATION, easing: cubicInOut }}
                         >
                             <div class="flip-card-inner">
                                 <div class="flip-face front-media rounded-2xl border border-[var(--color-primary)]/35 bg-[var(--color-surface)]">
@@ -104,13 +128,13 @@
         </div>
 
         <div class="carousel-controls">
-            <button type="button" class="carousel-button" aria-label="Previous achievement" onclick={previousAchievement}>
+            <button type="button" class="carousel-button" aria-label="Previous achievement" onclick={previousAchievement} disabled={isSliding}>
                 &lt;
             </button>
             <a class="gallery-button" href="/achievements-gallery" aria-label="View achievements gallery">
                 View Gallery
             </a>
-            <button type="button" class="carousel-button" aria-label="Next achievement" onclick={nextAchievement}>
+            <button type="button" class="carousel-button" aria-label="Next achievement" onclick={nextAchievement} disabled={isSliding}>
                 &gt;
             </button>
         </div>
@@ -156,7 +180,6 @@
         top: 50%;
         height: 100%;
         z-index: 1;
-        transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.38s ease;
     }
 
     .carousel-slot::after {
@@ -203,11 +226,45 @@
     }
 
     .flip-card {
+        display: block;
         height: 18rem;
         width: min(36vw, 30rem);
         flex: 0 0 auto;
         perspective: 1400px;
-        transition: transform 0.25s ease, opacity 0.25s ease;
+        transition: opacity 0.2s ease;
+        will-change: transform, opacity;
+    }
+
+    .flip-card.slide-from-right {
+        animation: card-slide-in-right var(--slide-duration, 380ms) cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    }
+
+    .flip-card.slide-from-left {
+        animation: card-slide-in-left var(--slide-duration, 380ms) cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    }
+
+    @keyframes card-slide-in-right {
+        from {
+            opacity: 0;
+            transform: translateX(44px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes card-slide-in-left {
+        from {
+            opacity: 0;
+            transform: translateX(-44px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
     }
 
     .flip-card-inner {
@@ -413,6 +470,35 @@
     }
 
     @media (max-width: 768px) {
+        .flip-card.slide-from-right,
+        .flip-card.slide-from-left {
+            --slide-duration: 260ms;
+        }
+
+        @keyframes card-slide-in-right {
+            from {
+                opacity: 0;
+                transform: translateX(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes card-slide-in-left {
+            from {
+                opacity: 0;
+                transform: translateX(-24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
         .achievement-viewport {
             height: 17.5rem;
         }

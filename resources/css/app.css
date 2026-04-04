@@ -29,6 +29,14 @@
     --grid-zoom-scale: 1;
 }
 
+html,
+body,
+#app {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     font-family: var(--font-sans);
     background: radial-gradient(circle at 20% 10%, rgba(85, 37, 131, 0.26), transparent 42%),

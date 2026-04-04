@@ -1,6 +1,5 @@
 <script>
     import { onMount } from 'svelte';
-    import { Menu, X } from 'lucide-svelte';
     import { gsap } from '../../lib/gsap';
 
     let { links = [] } = $props();
@@ -74,11 +73,18 @@
             <a href="/resume.pdf" download class="hidden rounded-full border border-[var(--color-primary)] px-4 py-2 text-xs font-medium text-[var(--color-text)] transition hover:bg-[var(--color-primary)]/20 md:inline-flex">
                 Download CV
             </a>
-            <button type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-primary)]/50 text-[var(--color-text)] md:hidden" onclick={toggleMenu} aria-label="Toggle mobile navigation" aria-expanded={isOpen} aria-controls="mobile-menu">
+            <button type="button" class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--color-primary)]/50 text-[var(--color-warm)] md:hidden" onclick={toggleMenu} aria-label="Toggle mobile navigation" aria-expanded={isOpen} aria-controls="mobile-menu">
                 {#if isOpen}
-                    <X class="h-5 w-5" />
+                    <svg class="block" style="width: 1.2rem; height: 1.2rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M18 6L6 18"></path>
+                        <path d="M6 6l12 12"></path>
+                    </svg>
                 {:else}
-                    <Menu class="h-5 w-5" />
+                    <svg class="block" style="width: 1.2rem; height: 1.2rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M4 7h16"></path>
+                        <path d="M4 12h16"></path>
+                        <path d="M4 17h16"></path>
+                    </svg>
                 {/if}
             </button>
         </div>

@@ -41,7 +41,7 @@
 
     <div class="relative z-10 mx-auto w-full max-w-4xl px-6">
         <h2 class="text-center font-display text-[clamp(1.8rem,3.6vw,2.55rem)] leading-tight text-[var(--color-warm)]">
-            LET'S BUILD SOMETHING TOGETHER.
+            CONNECT WITH ME AND LET'S BUILD GREAT THINGS TOGETHER
         </h2>
 
         <a

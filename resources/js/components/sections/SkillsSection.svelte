@@ -7,6 +7,7 @@
     let carouselItemsRef = $state([]);
     let scrollTween = $state(null);
     let highlightedIndex = $state(-1);
+    let isMobileView = $state(false);
 
     const carouselItems = [
         { name: 'Java', logo: 'https://skillicons.dev/icons?i=java' },
@@ -26,6 +27,21 @@
     const duplicatedCarouselItems = [...carouselItems, ...carouselItems];
 
     const applyCinemaCurve = () => {
+        if (isMobileView) {
+            for (const item of carouselItemsRef) {
+                if (!item) continue;
+
+                gsap.set(item, {
+                    y: 0,
+                    rotateY: 0,
+                    scale: 1,
+                    opacity: 1,
+                });
+            }
+
+            return;
+        }
+
         const viewportCenter = window.innerWidth / 2;
 
         for (const item of carouselItemsRef) {
@@ -50,19 +66,33 @@
     onMount(() => {
         if (!carouselTrack) return;
 
+        const syncViewport = () => {
+            isMobileView = window.innerWidth <= 768;
+            if (scrollTween) {
+                scrollTween.duration(isMobileView ? 28 : 22);
+            }
+            applyCinemaCurve();
+        };
+
+        syncViewport();
+
         applyCinemaCurve();
         scrollTween = gsap.to(carouselTrack, {
             xPercent: -50,
-            duration: 22,
+            duration: isMobileView ? 28 : 22,
             repeat: -1,
             ease: 'none',
-            onUpdate: applyCinemaCurve,
+            onUpdate: () => {
+                if (!isMobileView) {
+                    applyCinemaCurve();
+                }
+            },
         });
 
-        window.addEventListener('resize', applyCinemaCurve);
+        window.addEventListener('resize', syncViewport);
 
         return () => {
-            window.removeEventListener('resize', applyCinemaCurve);
+            window.removeEventListener('resize', syncViewport);
         };
     });
 
@@ -71,6 +101,7 @@
     });
 
     const handlePointerMove = (event) => {
+        if (isMobileView) return;
         if (!carouselItemsRef?.length) return;
 
         const cursorX = event.clientX;
@@ -175,7 +206,7 @@
         position: absolute;
         top: 0;
         bottom: 0;
-        width: 16vw;
+        width: 12vw;
         pointer-events: none;
         z-index: 2;
     }
@@ -183,15 +214,15 @@
     .skills-cinema::before {
         left: 0;
         background:
-            radial-gradient(ellipse 95% 130% at left center, rgba(11, 10, 18, 0.98) 0%, rgba(11, 10, 18, 0.66) 52%, rgba(11, 10, 18, 0) 100%),
-            linear-gradient(90deg, rgba(11, 10, 18, 0.95), rgba(11, 10, 18, 0));
+            radial-gradient(ellipse 95% 130% at left center, rgba(85, 37, 131, 0.44) 0%, rgba(85, 37, 131, 0.2) 52%, rgba(85, 37, 131, 0) 100%),
+            linear-gradient(90deg, rgba(85, 37, 131, 0.36), rgba(85, 37, 131, 0));
     }
 
     .skills-cinema::after {
         right: 0;
         background:
-            radial-gradient(ellipse 95% 130% at right center, rgba(11, 10, 18, 0.98) 0%, rgba(11, 10, 18, 0.66) 52%, rgba(11, 10, 18, 0) 100%),
-            linear-gradient(270deg, rgba(11, 10, 18, 0.95), rgba(11, 10, 18, 0));
+            radial-gradient(ellipse 95% 130% at right center, rgba(85, 37, 131, 0.44) 0%, rgba(85, 37, 131, 0.2) 52%, rgba(85, 37, 131, 0) 100%),
+            linear-gradient(270deg, rgba(85, 37, 131, 0.36), rgba(85, 37, 131, 0));
     }
 
     .skills-track {
@@ -246,8 +277,13 @@
     }
 
     @media (max-width: 768px) {
+        .skills-cinema::before,
+        .skills-cinema::after {
+            width: 9vw;
+        }
+
         .skills-stage {
-            transform: rotateX(12deg);
+            transform: none;
         }
 
         .skills-track {
