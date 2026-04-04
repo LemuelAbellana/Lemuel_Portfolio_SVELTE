@@ -152,7 +152,7 @@
                     </div>
 
                     <div class="flex min-h-0 flex-col p-7 md:p-10 lg:h-full">
-                        <div class="flex-1 overflow-y-auto pr-1 min-h-0">
+                        <div class="about-scroll flex-1 overflow-y-auto pr-2 min-h-0">
                             {#key activeIndex}
                                 <div class="min-h-[160px] md:min-h-[230px]" in:fade={{ duration: 260 }} out:fade={{ duration: 180 }}>
                                     <p class="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-muted)]">{activeSlide.lead}</p>
@@ -176,7 +176,7 @@
                 </div>
 
                 <div class="relative z-10 flex items-center justify-center gap-4 border-t border-[var(--color-primary)]/20 bg-[var(--color-bg)]/18 px-6 py-5">
-                    <button type="button" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--color-primary)]/35 text-lg text-[var(--color-muted)] transition hover:border-[var(--color-warm)] hover:text-[var(--color-warm)]" onclick={prevSlide} aria-label="Previous slide">
+                    <button type="button" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--color-warm)]/65 text-lg text-[var(--color-warm)] transition hover:bg-[var(--color-warm)]/12" onclick={prevSlide} aria-label="Previous slide">
                         &#8249;
                     </button>
 
@@ -184,14 +184,14 @@
                         {#each slides as _, i}
                             <button
                                 type="button"
-                                class={`h-2.5 rounded-full transition ${activeIndex === i ? 'w-6 bg-[var(--color-warm)]' : 'w-2.5 bg-[var(--color-primary)]/45'}`}
+                                class={`h-2.5 rounded-full transition ${activeIndex === i ? 'w-6 bg-[var(--color-warm)]' : 'w-2.5 bg-[var(--color-warm)]/35 hover:bg-[var(--color-warm)]/55'}`}
                                 onclick={() => goTo(i)}
                                 aria-label={`Go to slide ${i + 1}`}
                             ></button>
                         {/each}
                     </div>
 
-                    <button type="button" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--color-primary)]/35 text-lg text-[var(--color-muted)] transition hover:border-[var(--color-warm)] hover:text-[var(--color-warm)]" onclick={nextSlide} aria-label="Next slide">
+                    <button type="button" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--color-warm)]/65 text-lg text-[var(--color-warm)] transition hover:bg-[var(--color-warm)]/12" onclick={nextSlide} aria-label="Next slide">
                         &#8250;
                     </button>
                 </div>
@@ -199,3 +199,30 @@
         </div>
     </div>
 </section>
+
+<style>
+    .about-scroll {
+        scrollbar-width: thin;
+        scrollbar-color: color-mix(in srgb, var(--color-warm) 85%, transparent) transparent;
+    }
+
+    .about-scroll::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .about-scroll::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .about-scroll::-webkit-scrollbar-thumb {
+        background: color-mix(in srgb, var(--color-warm) 80%, transparent);
+        border-radius: 999px;
+        border: 2px solid transparent;
+        background-clip: content-box;
+    }
+
+    .about-scroll::-webkit-scrollbar-thumb:hover {
+        background: color-mix(in srgb, var(--color-warm) 100%, transparent);
+        background-clip: content-box;
+    }
+</style>

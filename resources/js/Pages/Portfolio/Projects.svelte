@@ -7,6 +7,7 @@
     let query = $state('');
     let selectedCategory = $state('All');
     let imageStageByName = $state({});
+    let selectedProjectImage = $state(null);
 
     const getProjectSlug = (projectName) =>
         projectName
@@ -15,15 +16,39 @@
             .trim()
             .replace(/\s+/g, '-');
 
-    const getProjectImageSrc = (projectName) => {
-        const stage = imageStageByName[projectName] ?? 0;
+    const getProjectImageSrc = (project) => {
+        const stage = imageStageByName[project.name] ?? 0;
+
+        if (project.image) {
+            return stage === 0 ? `/assets/images/projects/${project.image}` : null;
+        }
+
         if (stage >= imageExtensions.length) return null;
-        return `/assets/images/projects/${getProjectSlug(projectName)}.${imageExtensions[stage]}`;
+        return `/assets/images/projects/${getProjectSlug(project.name)}.${imageExtensions[stage]}`;
     };
 
     const handleProjectImageError = (projectName) => {
         const currentStage = imageStageByName[projectName] ?? 0;
         imageStageByName[projectName] = currentStage + 1;
+    };
+
+    const openImageModal = (src) => {
+        selectedProjectImage = src;
+    };
+
+    const closeImageModal = () => {
+        selectedProjectImage = null;
+    };
+
+    const handleWindowKeydown = (event) => {
+        if (event.key === 'Escape' && selectedProjectImage) {
+            closeImageModal();
+        }
+    };
+
+    const openFullImage = (src) => {
+        if (!src) return;
+        window.open(src, '_blank', 'noopener,noreferrer');
     };
 
     const filteredProjects = $derived(
@@ -49,6 +74,8 @@
 <svelte:head>
     <title>All Projects | Lemuel Opeña</title>
 </svelte:head>
+
+<svelte:window onkeydown={handleWindowKeydown} />
 
 <main class="min-h-screen text-[var(--color-text)]">
     <section class="mx-auto w-full max-w-7xl px-4 pb-20 pt-16 md:px-6 md:pt-20">
@@ -108,20 +135,22 @@
                         </div>
 
                         <h2 class="min-h-[5rem] text-center text-[clamp(1.25rem,1.5vw,1.85rem)] font-bold leading-tight text-[var(--color-warm)]">{project.name}</h2>
-                        <p class="min-h-[4.5rem] text-[clamp(0.85rem,0.95vw,1.1rem)] leading-snug text-[var(--color-muted)]">{project.description}</p>
+                        <p class="min-h-[4.5rem] text-justify text-[clamp(0.85rem,0.95vw,1.1rem)] leading-snug text-[var(--color-muted)]">{project.description}</p>
 
-                        <div class="mt-2 mb-4 overflow-hidden rounded-xl border border-[var(--color-primary)]/40 bg-[var(--color-bg)]/70 aspect-[16/10]">
-                            {#if getProjectImageSrc(project.name)}
-                                <img
-                                    src={getProjectImageSrc(project.name)}
-                                    alt={`${project.name} preview`}
-                                    class="h-full w-full object-cover"
-                                    loading="lazy"
-                                    onerror={() => handleProjectImageError(project.name)}
-                                />
+                        <div class="mt-2 mb-4 overflow-hidden rounded-xl border border-[var(--color-primary)]/40 bg-[var(--color-bg)]/70 aspect-[4/3]">
+                            {#if getProjectImageSrc(project)}
+                                <button type="button" class="h-full w-full" onclick={() => openImageModal(getProjectImageSrc(project))} aria-label={`Open full image for ${project.name}`}>
+                                    <img
+                                        src={getProjectImageSrc(project)}
+                                        alt={`${project.name} preview`}
+                                        class="h-full w-full cursor-zoom-in object-cover transition-opacity hover:opacity-90"
+                                        loading="lazy"
+                                        onerror={() => handleProjectImageError(project.name)}
+                                    />
+                                </button>
                             {:else}
                                 <div class="flex h-full w-full items-center justify-center bg-[radial-gradient(circle_at_20%_10%,rgba(85,37,131,0.28),transparent_52%),linear-gradient(180deg,rgba(9,9,18,0.72),rgba(8,8,15,0.92))] px-4 text-center text-sm font-semibold text-[var(--color-muted)]">
-                                    Image will appear here once uploaded to /assets/images/projects
+                                    Image will be uploaded once the project has been found.
                                 </div>
                             {/if}
                         </div>
@@ -152,4 +181,25 @@
             </div>
         {/if}
     </section>
+
+    {#if selectedProjectImage}
+        <div class="fixed inset-0 z-[90] flex items-center justify-center p-4" role="dialog" aria-modal="true" tabindex="-1">
+            <button type="button" class="absolute inset-0 border-0 bg-black/80" aria-label="Close image preview" onclick={closeImageModal}></button>
+            <div class="relative max-h-[94vh] w-auto max-w-[95vw] md:max-w-[1200px]">
+                <button
+                    type="button"
+                    class="absolute right-3 top-3 h-8 w-8 rounded-full border border-white/35 bg-black/60 text-xl leading-none text-white"
+                    aria-label="Close image preview"
+                    onclick={closeImageModal}
+                >
+                    &times;
+                </button>
+                <img
+                    src={selectedProjectImage}
+                    alt="Project preview"
+                    class="block max-h-[94vh] max-w-full rounded-xl border border-white/25 object-contain shadow-[0_22px_70px_rgba(0,0,0,0.46)]"
+                />
+            </div>
+        </div>
+    {/if}
 </main>

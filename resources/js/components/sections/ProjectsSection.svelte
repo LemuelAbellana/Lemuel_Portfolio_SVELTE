@@ -38,6 +38,7 @@
                         index={i + 1}
                         name={project.name}
                         description={project.description}
+                        image={project.image}
                         tags={project.tags}
                         role={project.role}
                         features={project.features}

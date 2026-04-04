@@ -1,6 +1,7 @@
 export const projects = [
     {
         name: 'IP Management System',
+        image: 'itsoip.png',
         description: 'A PWA built to streamline intellectual property protection application workflows for ITSO at UIC.',
         tags: ['PWA', 'Laravel', 'Software Engineering'],
         role: 'Full-Stack Developer',
@@ -11,6 +12,7 @@ export const projects = [
     },
     {
         name: 'RPIC Research Management',
+        image: 'rpic.jpg',
         description: 'A PWA for research defense scheduling, document storage, and publication and seminar information management.',
         tags: ['PWA', 'MySQL', 'PAASCU Support'],
         role: 'Backend and Database Developer',
@@ -21,6 +23,7 @@ export const projects = [
     },
     {
         name: 'UIC DOST Scholar Management System',
+        image: 'dost.jpg',
         description: 'A web-based system for managing UIC DOST scholar records, requirements, and status tracking workflows.',
         tags: ['Laravel', 'MySQL', 'Scholarship Management'],
         role: 'Full-Stack Developer',
@@ -31,6 +34,7 @@ export const projects = [
     },
     {
         name: 'Anime Dojo Game',
+        image: null,
         description: 'An interactive gaming PWA integrated with trained AI models to predict outcomes and provide user insights.',
         tags: ['AI', 'JavaScript', 'Node.js'],
         role: 'Game Systems Developer',
@@ -41,6 +45,7 @@ export const projects = [
     },
     {
         name: 'Guide to Loratadine (Allerta)',
+        image: null,
         description: 'A mobile application that educates users about Loratadine mechanisms and effects in the body.',
         tags: ['Mobile', 'Health Education', 'IT Elective'],
         role: 'Mobile App Developer',
@@ -51,6 +56,7 @@ export const projects = [
     },
     {
         name: 'NeuroZen',
+        image: 'neurozen.png',
         description: 'A mobile prototype for stress management with a simulated marketplace for wellness products.',
         tags: ['Mobile', 'Prototype', 'Wellness'],
         role: 'Prototype Developer',
@@ -61,6 +67,7 @@ export const projects = [
     },
     {
         name: 'TUN-AN Landing Page',
+        image: 'tun-an.jpg',
         description: 'A corporate landing page for a Technopreneurship company with an integrated email inquiry workflow.',
         tags: ['Landing Page', 'Email Integration', 'Technopreneurship'],
         role: 'Frontend and Integration Developer',
@@ -71,6 +78,7 @@ export const projects = [
     },
     {
         name: 'Clinic-Connect',
+        image: 'clinicconnect.jpg',
         description: 'A pediatric care appointment PWA for booking, consultations, and medication purchasing.',
         tags: ['PWA', 'Healthcare', 'Appointments'],
         role: 'Full-Stack Developer',
@@ -81,6 +89,7 @@ export const projects = [
     },
     {
         name: 'Ayo-ayo AI Green Computing',
+        image: 'ayoayo.jpg',
         description: 'An AI-integrated mobile app promoting e-waste mitigation through recycle, donate, and sell flows.',
         tags: ['AI', 'Mobile', 'Sustainability'],
         role: 'Mobile and API Integrator',
@@ -91,6 +100,7 @@ export const projects = [
     },
     {
         name: 'Public Health Research Forum Materials',
+        image: 'public-health.jpg',
         description: 'Designed publication materials for the University of the Immaculate Conception Public Health Research Forum 2024.',
         tags: ['Publication Design', 'Academic Event', '2024'],
         role: 'Publication Designer',
@@ -101,6 +111,7 @@ export const projects = [
     },
     {
         name: 'House Rental System',
+        image: null,
         description: 'A personal PWA for rental listing management and tenant tracking.',
         tags: ['PWA', 'Property Management', 'Personal Project'],
         role: 'Full-Stack Developer',
@@ -111,6 +122,7 @@ export const projects = [
     },
     {
         name: 'UIC Digital Christmas Tree',
+        image: 'xmas.jpg',
         description: 'A web application commemorating 2025 university events with interactive ornaments and 2026 resolution sharing.',
         tags: ['Interactive Web App', 'Community', 'Personal Project'],
         role: 'Frontend Developer',
@@ -121,6 +133,7 @@ export const projects = [
     },
     {
         name: 'UIC Valentine Wall',
+        image: 'valentine.jpg',
         description: 'An interactive wall web app where users can post and view digital valentine messages for the UIC community.',
         tags: ['Interactive Web App', 'Community', 'Event Project'],
         role: 'Frontend Developer',
@@ -131,6 +144,7 @@ export const projects = [
     },
     {
         name: 'Personal Portfolio Website',
+        image: 'portfolio.jpg',
         description: 'A personal web application presenting professional background, projects, affiliations, and services.',
         tags: ['Portfolio', 'Svelte', 'Laravel'],
         role: 'Designer and Developer',
@@ -141,6 +155,7 @@ export const projects = [
     },
     {
         name: 'NASA Data Weather Forecast App',
+        image: 'nasaapp.png',
         description: 'An AI-integrated mobile app using NASA data to provide weather safety insights for hikers and adventurers.',
         tags: ['AI', 'NASA Data', 'Mobile'],
         role: 'Mobile and AI Integrator',
@@ -151,6 +166,7 @@ export const projects = [
     },
     {
         name: 'Book-It-Now',
+        image: 'book-it-now.png',
         description:
             'Book-It-Now is a booking system designed specifically for the ICTDU (Information and Communications Technology Development Unit) at the University of the Immaculate Conception (UIC). It streamlines the process for officers and the secretary, making it easier to access, manage, and coordinate the utilization of ICTDU resources efficiently.',
         tags: ['Java', 'MySQL', 'Booking System', 'ICTDU Support'],
