@@ -4,7 +4,7 @@ This guide deploys this project to:
 - VPS: Contabo (Ubuntu)
 - Panel: CloudPanel
 - Domain: `portfolio.lemuel-abellana.dev` (Cloudflare)
-- Runtime: Full Docker stack (Nginx + Laravel PHP-FPM + MySQL)
+- Runtime: Full Docker stack (Nginx + Laravel PHP-FPM 8.4 + MySQL)
 
 Goal: secure and simple deployment, without overengineering.
 
