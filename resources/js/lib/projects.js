@@ -149,4 +149,15 @@ export const projects = [
         category: 'Mobile',
         featured: false,
     },
+    {
+        name: 'Book-It-Now',
+        description:
+            'Book-It-Now is a booking system designed specifically for the ICTDU (Information and Communications Technology Development Unit) at the University of the Immaculate Conception (UIC). It streamlines the process for officers and the secretary, making it easier to access, manage, and coordinate the utilization of ICTDU resources efficiently.',
+        tags: ['Java', 'MySQL', 'Booking System', 'ICTDU Support'],
+        role: 'Backend and Database Developer',
+        features: ['Resource booking workflow', 'Officer and secretary coordination tools', 'Scheduling and utilization management'],
+        outcome: 'Improved ICTDU resource coordination through a more organized and efficient booking process.',
+        category: 'Web',
+        featured: false,
+    },
 ];
