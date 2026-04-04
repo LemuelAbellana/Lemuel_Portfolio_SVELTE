@@ -9,7 +9,7 @@ Route::get('/', function () {
         'profile' => [
             'name' => 'Lemuel G. Abellana',
             'title' => 'BSIT Student | Full-Stack Developer',
-            'tagline' => 'Building practical web and mobile systems with AI integration for education and community impact.',
+            'tagline' => 'I am a lifelong learner dedicated to continuous improvement, embracing humility and accountability while actively seeking opportunities to expand my knowledge, refine my skills, and grow as an IT student.',
             'email' => 'lemuelabellana84@gmail.com',
             'phone' => '09512575802',
             'location' => 'Molave Street, Barangay Santo Nino, Tugbok District, Davao City',
@@ -39,7 +39,7 @@ Route::get('/projects', function () {
         'profile' => [
             'name' => 'Lemuel G. Abellana',
             'title' => 'BSIT Student | Full-Stack Developer',
-            'tagline' => 'Building practical web and mobile systems with AI integration for education and community impact.',
+            'tagline' => 'I am a lifelong learner dedicated to continuous improvement, embracing humility and accountability while actively seeking opportunities to expand my knowledge, refine my skills, and grow as an IT student',
             'email' => 'lemuelabellana84@gmail.com',
             'phone' => '09512575802',
             'location' => 'Molave Street, Barangay Santo Nino, Tugbok District, Davao City',
@@ -59,7 +59,7 @@ Route::get('/leadership', function () {
         'profile' => [
             'name' => 'Lemuel G. Abellana',
             'title' => 'BSIT Student | Full-Stack Developer',
-            'tagline' => 'Building practical web and mobile systems with AI integration for education and community impact.',
+            'tagline' => 'I am a lifelong learner dedicated to continuous improvement, embracing humility and accountability while actively seeking opportunities to expand my knowledge, refine my skills, and grow as an IT student',
             'email' => 'lemuelabellana84@gmail.com',
             'phone' => '09512575802',
             'location' => 'Molave Street, Barangay Santo Nino, Tugbok District, Davao City',
