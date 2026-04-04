@@ -1,10 +1,10 @@
-# Deploy Laravel Portfolio on Contabo + CloudPanel + Cloudflare
+# Deploy Laravel Portfolio on Contabo + CloudPanel + Cloudflare (Docker-First)
 
 This guide deploys this project to:
 - VPS: Contabo (Ubuntu)
 - Panel: CloudPanel
 - Domain: `portfolio.lemuel-abellana.dev` (Cloudflare)
-- Database: MySQL in Docker
+- Runtime: Full Docker stack (Nginx + Laravel PHP-FPM + MySQL)
 
 Goal: secure and simple deployment, without overengineering.
 
@@ -64,7 +64,7 @@ systemctl restart ssh
 
 ---
 
-## 3) Install Docker (for MySQL only)
+## 3) Install Docker (for Full Stack)
 
 ```bash
 install -m 0755 -d /etc/apt/keyrings
@@ -83,16 +83,22 @@ systemctl start docker
 
 ---
 
-## 4) Create Secure MySQL Docker Stack
+## 4) Create Docker Stack (App + Nginx + MySQL)
 
-Create directory:
+Use the Docker files committed in this repository:
+- `Dockerfile`
+- `docker-compose.yml`
+- `docker/nginx/default.conf`
+- `.env.stack.example`
+
+Copy the repo to the server, then create the real MySQL secrets file from example:
 
 ```bash
-mkdir -p /opt/portfolio/mysql
-cd /opt/portfolio/mysql
+cd /home/cloudpanel/htdocs/portfolio.lemuel-abellana.dev
+cp .env.stack.example .env.stack
 ```
 
-Create `.env.mysql`:
+Set secure values in `.env.stack`:
 
 ```env
 MYSQL_ROOT_PASSWORD=CHANGE_THIS_STRONG_ROOT_PASSWORD
@@ -101,23 +107,47 @@ MYSQL_USER=portfolio_user
 MYSQL_PASSWORD=CHANGE_THIS_STRONG_APP_PASSWORD
 ```
 
-Create `docker-compose.yml`:
+The committed `docker-compose.yml` should contain:
 
 ```yaml
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    working_dir: /var/www
+    env_file:
+      - .env
+    volumes:
+      - ./:/var/www
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  web:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:80"
+    volumes:
+      - ./:/var/www:ro
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - app
+
   mysql:
     image: mysql:8.4
-    container_name: portfolio_mysql
     restart: unless-stopped
-    command: --default-authentication-plugin=mysql_native_password
+    command: --default-authentication-plugin=mysql_native_password --skip-name-resolve
     env_file:
-      - .env.mysql
+      - .env.stack
     ports:
       - "127.0.0.1:3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-p$${MYSQL_ROOT_PASSWORD}"]
       interval: 10s
       timeout: 5s
       retries: 12
@@ -126,7 +156,7 @@ volumes:
   mysql_data:
 ```
 
-Start MySQL:
+Start stack:
 
 ```bash
 docker compose up -d
@@ -136,19 +166,20 @@ Verify:
 
 ```bash
 docker ps
-docker logs --tail=100 portfolio_mysql
+docker compose logs --tail=100 web
+docker compose logs --tail=100 app
+docker compose logs --tail=100 mysql
 ```
 
 ---
 
-## 5) CloudPanel App Setup
+## 5) CloudPanel Setup (Reverse Proxy to Docker)
 
 In CloudPanel:
-1. Add Site -> Create PHP Site
+1. Add Site -> Create Reverse Proxy Site
 2. Domain: `portfolio.lemuel-abellana.dev`
-3. PHP: 8.3+
-4. Site user: keep generated user
-5. Document root: `public`
+3. Proxy target: `http://127.0.0.1:8080`
+4. Enable HTTPS and force redirect
 
 Recommended project path example:
 
@@ -193,7 +224,7 @@ cd /home/cloudpanel/htdocs/portfolio.lemuel-abellana.dev
 
 ---
 
-## 7) Configure Laravel for Production
+## 7) Configure Laravel for Docker Production
 
 Create production env:
 
@@ -209,7 +240,7 @@ APP_DEBUG=false
 APP_URL=https://portfolio.lemuel-abellana.dev
 
 DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
+DB_HOST=mysql
 DB_PORT=3306
 DB_DATABASE=portfolio_lemuel
 DB_USERNAME=portfolio_user
@@ -226,15 +257,22 @@ Use the production env file:
 cp .env.production .env
 ```
 
-Install/build:
+Build and start Docker app:
 
 ```bash
-composer install --no-dev --optimize-autoloader
-npm ci
-npm run build
-php artisan key:generate --force
-php artisan migrate --force
-php artisan optimize
+cd /home/cloudpanel/htdocs/portfolio.lemuel-abellana.dev
+docker compose up -d --build
+```
+
+Install dependencies, build assets, run migrations inside container:
+
+```bash
+docker compose exec app composer install --no-dev --optimize-autoloader
+docker compose exec app npm ci
+docker compose exec app npm run build
+docker compose exec app php artisan key:generate --force
+docker compose exec app php artisan migrate --force
+docker compose exec app php artisan optimize
 ```
 
 Permissions:
@@ -269,10 +307,12 @@ In CloudPanel:
 App and DB checks:
 
 ```bash
-php artisan about
-php artisan migrate:status
-php artisan route:list
-php artisan test
+cd /home/cloudpanel/htdocs/portfolio.lemuel-abellana.dev
+docker compose exec app php artisan about
+docker compose exec app php artisan migrate:status
+docker compose exec app php artisan route:list
+docker compose exec app php artisan test
+curl -I http://127.0.0.1:8080
 curl -I https://portfolio.lemuel-abellana.dev
 ```
 
@@ -281,7 +321,7 @@ Contact form DB write test (manual):
 2. Verify in DB:
 
 ```bash
-docker exec -it portfolio_mysql mysql -uportfolio_user -p portfolio_lemuel -e "SELECT id,name,email,created_at FROM contacts ORDER BY id DESC LIMIT 5;"
+docker compose exec mysql mysql -uportfolio_user -p portfolio_lemuel -e "SELECT id,name,email,created_at FROM contacts ORDER BY id DESC LIMIT 5;"
 ```
 
 If all checks pass, deployment is successful.
@@ -294,6 +334,7 @@ Keep these enabled:
 - `APP_DEBUG=false` always in production
 - No root DB use by app (use `portfolio_user` only)
 - MySQL bound to `127.0.0.1` only (already done)
+- Web container bound to `127.0.0.1:8080` only (CloudPanel proxies it)
 - UFW only open: `22`, `80`, `443`
 - SSH key-only auth, root SSH disabled
 - Regular patching:
@@ -314,15 +355,17 @@ When updating code:
 ```bash
 cd /home/cloudpanel/htdocs/portfolio.lemuel-abellana.dev
 git pull origin main
-composer install --no-dev --optimize-autoloader
-npm ci && npm run build
-php artisan migrate --force
-php artisan optimize
+docker compose exec app composer install --no-dev --optimize-autoloader
+docker compose exec app npm ci && docker compose exec app npm run build
+docker compose exec app php artisan migrate --force
+docker compose exec app php artisan optimize
+docker compose up -d --build
 ```
 
 Quick health check:
 
 ```bash
+curl -I http://127.0.0.1:8080
 curl -I https://portfolio.lemuel-abellana.dev
 ```
 
