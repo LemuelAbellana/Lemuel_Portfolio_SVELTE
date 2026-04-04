@@ -139,7 +139,7 @@ services:
   mysql:
     image: mysql:8.4
     restart: unless-stopped
-    command: --default-authentication-plugin=mysql_native_password --skip-name-resolve
+    command: --skip-name-resolve
     env_file:
       - .env.stack
     ports:
