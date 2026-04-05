@@ -17,7 +17,7 @@
 
     onMount(() => {
         if (!section) return;
-        trigger = revealOnScroll(section, cardNodes, { animation: { stagger: 0.14 } });
+        trigger = revealOnScroll(section, cardNodes, { animation: { stagger: 0.14, clearProps: 'transform' } });
     });
 
     onDestroy(() => {
