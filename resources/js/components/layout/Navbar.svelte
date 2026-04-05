@@ -10,6 +10,9 @@
     const scrollToSection = (id) => {
         const el = document.getElementById(id);
         if (el) {
+            if (window.location.hash) {
+                window.history.replaceState({}, '', `${window.location.pathname}${window.location.search}`);
+            }
             el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
         isOpen = false;

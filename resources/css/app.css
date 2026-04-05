@@ -47,6 +47,31 @@ body {
     color: var(--color-text);
 }
 
+html {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--color-warm) 85%, transparent) transparent;
+}
+
+html::-webkit-scrollbar {
+    width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--color-warm) 80%, transparent);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--color-warm) 100%, transparent);
+    background-clip: content-box;
+}
+
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,

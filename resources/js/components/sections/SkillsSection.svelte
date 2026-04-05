@@ -26,7 +26,7 @@
     ];
 
     const technicalSkills = [
-        { name: 'System Analysis and Design', value: 75 },
+        { name: 'AI and AI Integrated System', value: 75 },
         { name: 'Web Development', value: 80 },
         { name: 'Database Management', value: 80 },
         { name: 'Mobile Development', value: 50 },
