@@ -19,6 +19,15 @@
     };
 
     const navigateTo = (item) => {
+        if (item?.href === '/' && window.location.pathname === '/') {
+            if (window.location.hash) {
+                window.history.replaceState({}, '', `${window.location.pathname}${window.location.search}`);
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            isOpen = false;
+            return;
+        }
+
         if (item?.href) {
             window.location.href = item.href;
             isOpen = false;
