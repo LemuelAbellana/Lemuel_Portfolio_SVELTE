@@ -93,10 +93,18 @@ textarea:focus-visible {
     padding-bottom: var(--spacing-section);
 }
 
+#about.section-wrap {
+    padding-top: 0.25rem;
+}
+
 @media (min-width: 1024px) {
     .section-wrap {
         padding-top: 8rem;
         padding-bottom: 8rem;
+    }
+
+    #about.section-wrap {
+        padding-top: 0.5rem;
     }
 }
 
