@@ -108,39 +108,51 @@
 <style>
     .brand-name {
         margin-left: 0.72rem;
-        font-family: 'Playfair Display', serif;
-        font-style: italic;
+        font-family: var(--font-sans);
+        font-style: normal;
         font-size: clamp(1rem, 1.45vw, 1.45rem);
-        font-weight: 700;
+        font-weight: 800;
         line-height: 1;
         letter-spacing: 0.02em;
         color: var(--color-warm);
-        text-shadow: 0 0 18px rgba(253, 185, 39, 0.22);
+        text-shadow: 0 0 8px rgba(253, 185, 39, 0.35), 0 0 22px rgba(253, 185, 39, 0.28);
+        animation: brandGlow 2.2s ease-in-out infinite alternate;
     }
 
     .mobile-brand-name {
         padding: 0 0.75rem 0.25rem;
-        font-family: 'Playfair Display', serif;
-        font-style: italic;
+        font-family: var(--font-sans);
+        font-style: normal;
         font-size: 1rem;
-        font-weight: 700;
+        font-weight: 800;
         line-height: 1.1;
         letter-spacing: 0.02em;
         color: var(--color-warm);
-        text-shadow: 0 0 18px rgba(253, 185, 39, 0.22);
+        text-shadow: 0 0 8px rgba(253, 185, 39, 0.35), 0 0 22px rgba(253, 185, 39, 0.28);
+        animation: brandGlow 2.2s ease-in-out infinite alternate;
     }
 
     .mobile-brand-inline {
         margin-left: 0.55rem;
-        font-family: 'Playfair Display', serif;
-        font-style: italic;
+        font-family: var(--font-sans);
+        font-style: normal;
         font-size: clamp(0.84rem, 3.9vw, 1rem);
-        font-weight: 700;
+        font-weight: 800;
         line-height: 1;
         letter-spacing: 0.02em;
         color: var(--color-warm);
-        text-shadow: 0 0 18px rgba(253, 185, 39, 0.22);
+        text-shadow: 0 0 8px rgba(253, 185, 39, 0.35), 0 0 22px rgba(253, 185, 39, 0.28);
+        animation: brandGlow 2.2s ease-in-out infinite alternate;
         white-space: nowrap;
+    }
+
+    @keyframes brandGlow {
+        from {
+            text-shadow: 0 0 6px rgba(253, 185, 39, 0.28), 0 0 16px rgba(253, 185, 39, 0.18);
+        }
+        to {
+            text-shadow: 0 0 10px rgba(253, 185, 39, 0.45), 0 0 26px rgba(253, 185, 39, 0.33);
+        }
     }
 
     @media (max-width: 420px) {
